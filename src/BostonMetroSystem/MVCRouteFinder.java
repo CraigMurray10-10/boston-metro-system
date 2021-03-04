@@ -11,4 +11,21 @@ public class MVCRouteFinder {
         theView.setVisible(true);
     }
 
+        private static List<String> findStations(){
+        try {
+            List<String> stations = Files.readAllLines(Paths.get("bostonmetro"));
+            return stations;
+        }
+        catch(IOException e){
+            System.out.println("IO Error");
+            e.printStackTrace();
+        }
+        return null;
+    }
+    private static Station parseStation(String station){
+
+        Station station = new Station();
+        return station;
+    }
+
 }
