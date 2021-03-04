@@ -1,5 +1,10 @@
 package BostonMetroSystem;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class MVCRouteFinder {
     public static void main(String[] args){
         RouteFinderView theView = new RouteFinderView();
@@ -10,22 +15,4 @@ public class MVCRouteFinder {
 
         theView.setVisible(true);
     }
-
-        private static List<String> findStations(){
-        try {
-            List<String> stations = Files.readAllLines(Paths.get("bostonmetro"));
-            return stations;
-        }
-        catch(IOException e){
-            System.out.println("IO Error");
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private static Station parseStation(String station){
-
-        Station station = new Station();
-        return station;
-    }
-
 }
