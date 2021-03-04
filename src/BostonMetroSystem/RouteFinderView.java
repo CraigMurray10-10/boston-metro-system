@@ -1,4 +1,5 @@
 package BostonMetroSystem;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
@@ -21,6 +22,7 @@ public class RouteFinderView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 200);
 
+        findRoutePanel.setLayout(new GridLayout(3, 3));
         findRoutePanel.add(startLabel);
         findRoutePanel.add(endLabel);
         findRoutePanel.add(routeLabel);
