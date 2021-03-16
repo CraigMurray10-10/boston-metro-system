@@ -15,7 +15,7 @@ public class Parser {
 
     public ArrayList<String> readFile() {
         try {
-            File myObj = new File("test.txt");
+            File myObj = new File("src/BostonMetroSystem/test.txt");
             Scanner myReader = new Scanner(myObj);
             String data = "";
             ArrayList<String> stations = new ArrayList();
@@ -24,18 +24,13 @@ public class Parser {
                  stations.add(data);
 //            List<String> stations = Files.readAllLines(Paths.get("bostonmetro(1).txt"));
 //            System.out.println(stations);
-
-
             }
-
             myReader.close();
             System.out.println(stations);
             return stations;
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -65,32 +60,11 @@ public class Parser {
                else{
                    break;
                }
-
-
            }
-
-
             //convert id to an int
             int id = Integer.parseInt(stringId);
             System.out.println( id);
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             return parseStation;
     }
 
@@ -99,9 +73,12 @@ public class Parser {
 
 
 
+    /*
     private static Station parseStation(String station){
         //Parse station ID, station name, Neighbours list, etc.
         Station s = new Station();
         return s;
 }
+
+     */
 }

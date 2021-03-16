@@ -1,24 +1,34 @@
 package BostonMetroSystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MetroGraph implements Graph{
+public class MetroGraph implements Graph<Station>{
+    HashMap <Station, List<Station>> adjStations = new HashMap<>();
+
+
     public MetroGraph() {
-        Station station1 = new Station();
-        Station station2 = new Station();
-        RouteCalculator routeCalc = new RouteCalculator(station1, station2);
-        Parser metroParser = new Parser();
+
+
+        //RouteCalculator routeCalc = new RouteCalculator(station1, station2);
+        //Parser metroParser = new Parser();
     }
 
-    public void addVertex(int node) {
+    public void addVertex(Station newStation) {
+        //vertex added to list of vertices with empty array list
+        adjStations.putIfAbsent(newStation, new ArrayList<>());
 
     }
 
-    public void addEdge(int node1, int node2, String edge) {
+    public void addEdge(Station src, Station dest) {
+
+        adjStations.get(src).add(dest);
+        adjStations.get(dest).add(src);
     }
 
-    public List<HashMap<Integer, String>> neighbours(int node) {
-        return null;
+    public List<Station> getAdjVertices(Station station) {
+        return adjStations.get(station);
     }
+
 }

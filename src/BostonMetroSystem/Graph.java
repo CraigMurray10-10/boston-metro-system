@@ -1,14 +1,10 @@
 package BostonMetroSystem;
 import java.util.*;
 
-public interface Graph {
-    HashMap <Integer, String> graphNodes = new HashMap<>();
-    ArrayList<String> edgeList = new ArrayList<>();
-    Set<Integer> vertexSet = graphNodes.keySet();
-
-    public void addVertex(int node);
-    public void addEdge(int node1, int node2, String edge);
-    public List<HashMap<Integer, String>> neighbours(int node);
+public interface Graph<S> {
+    public void addVertex(S node);
+    public void addEdge(S node1, S node2);
+    public List<S> getAdjVertices(S node);
 
 }
 
