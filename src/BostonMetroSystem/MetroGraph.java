@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MetroGraph implements Graph<Station>{
-    HashMap <Station, List<Station>> adjStations = new HashMap<>();
+public class MetroGraph implements Graph<Station, StationColorPair> {
+    HashMap <Station, List<StationColorPair>> adjStations = new HashMap<>();
 
 
     public MetroGraph() {
@@ -21,13 +21,16 @@ public class MetroGraph implements Graph<Station>{
 
     }
 
-    public void addEdge(Station src, Station dest) {
+    public void addEdge(Station src, Station dest, String color) {
+        StationColorPair srcToDest = new StationColorPair(dest, color);
+        StationColorPair destToSrc = new StationColorPair(src, color);
 
-        adjStations.get(src).add(dest);
-        adjStations.get(dest).add(src);
+
+        adjStations.get(src).add(srcToDest);
+        adjStations.get(dest).add(destToSrc);
     }
 
-    public List<Station> getAdjVertices(Station station) {
+    public List<StationColorPair> getAdjVertices(Station station) {
         return adjStations.get(station);
     }
 
