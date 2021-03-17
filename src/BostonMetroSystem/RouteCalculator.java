@@ -30,7 +30,8 @@ public class RouteCalculator {
 
                 //adds all stations to agenda
                 for(int i = 0; i < nextStatesPairs.size(); i++){
-                    List<Station> tempPath = currentPath;
+                    List<Station> tempPath = new ArrayList<Station>();
+                    tempPath.addAll(currentPath);
                     tempPath.add(nextStatesPairs.get(i).getKey());
                     agenda.add(tempPath);
                 }
