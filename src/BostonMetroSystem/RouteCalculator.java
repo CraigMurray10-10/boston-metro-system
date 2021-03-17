@@ -10,29 +10,32 @@ public class RouteCalculator {
 
     }
 
-    public Boolean calculateRoute(Station source, Station destination){
+    public List<Station> calculateRoute(Station source, Station destination){
         int count = 0;
-        List<Station> agenda = new ArrayList<>();
-        agenda.add(source);
+        List<List<Station>> agenda = new ArrayList<>();
+        agenda.add(new ArrayList<>(Arrays.asList(source)));
 
         //count is hard coded limit - used number of stations as would assume this would be longest
         //route length possible
         while (!agenda.isEmpty() && count < 125) {
-            Station current = agenda.get(0);
+            List<Station> currentPath = agenda.get(0);
+            Station currentNode = currentPath.get(currentPath.size() - 1);
             count +=1;
-            agenda.remove(current);
+            agenda.remove(currentPath);
 
-            if (destination == current) {
-                return true;
+            if (destination == currentNode) {
+                return currentPath;
             }else{
-                List<StationColorPair> nextStatesPairs = metroSystem.getAdjVertices(current);
+                List<StationColorPair> nextStatesPairs = metroSystem.getAdjVertices(currentNode);
 
                 //adds all stations to agenda
                 for(int i = 0; i < nextStatesPairs.size(); i++){
-                    agenda.add(nextStatesPairs.get(i).getKey());
+                    List<Station> tempPath = currentPath;
+                    tempPath.add(nextStatesPairs.get(i).getKey());
+                    agenda.add(tempPath);
                 }
             }
         }
-        return false;
+        return null;
     }
 }

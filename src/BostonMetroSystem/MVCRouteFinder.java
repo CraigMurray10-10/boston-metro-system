@@ -50,8 +50,12 @@ public class MVCRouteFinder {
 
         RouteCalculator rc = new RouteCalculator(graph);
 
-        Boolean found = rc.calculateRoute(s1, s5);
-        System.out.println(found);
+        List<Station> route = rc.calculateRoute(s1, s5);
+
+        for(int i = 0; i < route.size(); i++){
+            System.out.println(route.get(i).getStation());
+        }
+
          /*
         List<StationColorPair> s1AdjVertices = graph.getAdjVertices(s1);
         List<StationColorPair> s2AdjVertices = graph.getAdjVertices(s2);
