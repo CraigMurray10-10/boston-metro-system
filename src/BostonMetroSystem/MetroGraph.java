@@ -7,8 +7,6 @@ import java.util.List;
 public class MetroGraph implements Graph<Station, StationColorPair> {
     HashMap <Station, List<StationColorPair>> adjStations;
 
-
-
     public MetroGraph() {
         //RouteCalculator routeCalc = new RouteCalculator(station1, station2);
         //Parser metroParser = new Parser();

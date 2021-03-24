@@ -28,28 +28,28 @@ public class RouteFinderTest {
     public void setUp(){
         graph = new MetroGraph();
 
-        s1 = new Station(1, "Station1");
-        s2 = new Station(2, "Station2");
-        s3 = new Station(3, "Station3");
-        s4 = new Station(4, "Station4");
-        s5 = new Station(5, "Station5");
-        s6 = new Station(6, "Station6");
-
-        graph.addVertex(s1);
-        graph.addVertex(s2);
-        graph.addVertex(s3);
-        graph.addVertex(s4);
-        graph.addVertex(s5);
-        graph.addVertex(s6);
-
-        graph.addEdge(s1,s2, "red") ;
-        graph.addEdge(s1,s3, "blue");
-        graph.addEdge(s1,s5, "orange");
-        graph.addEdge(s2,s4, "red");
-        graph.addEdge(s2,s5, "orange");
-        graph.addEdge(s3,s5, "blue");
-
-        rc = new RouteCalculator(graph);
+//        s1 = new Station(1, "Station1");
+//        s2 = new Station(2, "Station2");
+//        s3 = new Station(3, "Station3");
+//        s4 = new Station(4, "Station4");
+//        s5 = new Station(5, "Station5");
+//        s6 = new Station(6, "Station6");
+//
+//        graph.addVertex(s1);
+//        graph.addVertex(s2);
+//        graph.addVertex(s3);
+//        graph.addVertex(s4);
+//        graph.addVertex(s5);
+//        graph.addVertex(s6);
+//
+//        graph.addEdge(s1,s2, "red") ;
+//        graph.addEdge(s1,s3, "blue");
+//        graph.addEdge(s1,s5, "orange");
+//        graph.addEdge(s2,s4, "red");
+//        graph.addEdge(s2,s5, "orange");
+//        graph.addEdge(s3,s5, "blue");
+//
+//        rc = new RouteCalculator(graph);
 
 
     }
@@ -58,17 +58,17 @@ public class RouteFinderTest {
     public void searchNoEqualPathLengths(){
 
 
-        List<Station> route1 = rc.calculateRoute(s1, s5);
-        List<Station> expectedRoute1 = new ArrayList<>(Arrays.asList(s1,s5));
-
-        Station s4 = new Station(4, "Station4");
-        List<Station> route2 = rc.calculateRoute(s1, s4);
-
-        List<Station> expectedRoute2 = new ArrayList<>(Arrays.asList(s1,s2,s4));
-
-        assertAll(
-                () -> assertEquals(route1, expectedRoute1)
-        );
+//        List<Station> route1 = rc.calculateRoute(s1, s5);
+//        List<Station> expectedRoute1 = new ArrayList<>(Arrays.asList(s1,s5));
+//
+//        Station s4 = new Station(4, "Station4");
+//        List<Station> route2 = rc.calculateRoute(s1, s4);
+//
+//        List<Station> expectedRoute2 = new ArrayList<>(Arrays.asList(s1,s2,s4));
+//
+//        assertAll(
+//                () -> assertEquals(route1, expectedRoute1)
+//        );
     }
 
 
