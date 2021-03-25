@@ -9,7 +9,7 @@ public class RouteFinderController {
     public RouteFinderController(RouteFinderView theView, RouteFinderModel theModel){
         this.theView = theView;
         this.theModel = theModel;
-        ArrayList<String> stations = theModel.parseFile();
+        ArrayList<Station> stations = theModel.parseFile();
 
 
         //this.theView.addCalcRouteListener(new CalculateListener());

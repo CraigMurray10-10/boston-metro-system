@@ -58,48 +58,43 @@ public class Parser {
 
             //Call parseVal method to parse first val among spaces
             stringId = parseVal(allStationInfo);
-            allStationInfo = allStationInfo.replaceFirst(stringId, "");
+            allStationInfo = fixString(stringId, allStationInfo);
 
             //convert id to an int
             int id = Integer.parseInt(stringId);
-            System.out.println(id);
-            allStationInfo = allStationInfo.trim();
 
             //Call parseVal method to parse second val among spaces
             String stationName = parseVal(allStationInfo);
-            allStationInfo = allStationInfo.replaceFirst(stationName, "");
-            allStationInfo = allStationInfo.trim();
+            allStationInfo = fixString(stationName, allStationInfo);
             ArrayList<Neighbour> neighbours = new ArrayList<Neighbour>();
-            Neighbour neighbour = new Neighbour("", 0, 0);
 
+            // code takes the neighbour object itself and changes that later, if using same object then values all become the same
+            // need to differentiate between new neighbour and old one
             while (!allStationInfo.equals("")){
 
                 String val = parseVal(allStationInfo);
-                allStationInfo = allStationInfo.replaceFirst(val, "");
-                allStationInfo = allStationInfo.trim();
+                allStationInfo = fixString(val, allStationInfo);
 
                 if(!(Character.isDigit(val.charAt(0)))){
-                    //must be line colour
+                    Neighbour neighbour = new Neighbour("", 0, 0);
                     neighbour.setColour(val);
-                } else {
-                    //must be neighbour station
+
                     //set first
+                    val = parseVal(allStationInfo);
                     neighbour.setFirst(Integer.parseInt(val));
-                    allStationInfo = allStationInfo.trim();
+                    allStationInfo = fixString(val, allStationInfo);
 
                     //set second
                     val = parseVal(allStationInfo);
-                    allStationInfo = allStationInfo.replaceFirst(val, "");
-                    allStationInfo = allStationInfo.trim();
                     neighbour.setSecond(Integer.parseInt(val));
-                    allStationInfo = allStationInfo.trim();
+                    allStationInfo = fixString(val, allStationInfo);
                     neighbours.add(neighbour);
                 }
             }
             Station station = new Station(id, stationName, neighbours);
             stations.add(station);
         }
-            return stations;
+        return stations;
     }
 
 
@@ -116,6 +111,11 @@ public class Parser {
         return val;
     }
 
+    public String fixString(String val, String allStationInfo){
+        allStationInfo = allStationInfo.replaceFirst(val, "");
+        allStationInfo = allStationInfo.trim();
+        return allStationInfo;
+    }
 
 
 
