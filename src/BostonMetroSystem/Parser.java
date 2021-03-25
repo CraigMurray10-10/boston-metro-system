@@ -68,8 +68,6 @@ public class Parser {
             allStationInfo = fixString(stationName, allStationInfo);
             ArrayList<Neighbour> neighbours = new ArrayList<Neighbour>();
 
-            // code takes the neighbour object itself and changes that later, if using same object then values all become the same
-            // need to differentiate between new neighbour and old one
             while (!allStationInfo.equals("")){
 
                 String val = parseVal(allStationInfo);
