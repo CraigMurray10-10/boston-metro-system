@@ -14,7 +14,6 @@ public class RouteFinderModel {
     }
 
     public ArrayList parseFile(){
-
         Parser parse = new Parser();
         ArrayList<Station> stations = parse.parseFile();
 

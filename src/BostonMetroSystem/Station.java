@@ -12,7 +12,7 @@ public class Station {
 
     public Station(int ID, String station, ArrayList<Neighbour> neighbours){
         this.ID = ID;
-        this.station = station;
+        this.station = station.trim();
         this.neighbours = neighbours;
     }
 
@@ -25,4 +25,8 @@ public class Station {
     }
 
     public ArrayList<Neighbour> getNeighbours() {return neighbours;}
+
+    public String stationAsString(){
+        return (this.ID + " " + this.station);
+    }
 }

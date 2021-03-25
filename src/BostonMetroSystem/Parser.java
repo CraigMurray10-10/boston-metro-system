@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.List;
 
 public class Parser {
 
@@ -28,7 +27,7 @@ public class Parser {
             }
 
             myReader.close();
-            System.out.println(stations);
+            //System.out.println(stations);
 
             return stations;
 
@@ -42,7 +41,7 @@ public class Parser {
     public ArrayList<Station> parseFile(){
         //Get a list of all the stations
         ArrayList<String> parseStation = this.readFile();
-        ArrayList<Station> stations = new ArrayList<Station>();
+        ArrayList<Station> stations = new ArrayList<>();
 
         //loop for every station
         for(int i = 0; i < parseStation.size(); i++) {

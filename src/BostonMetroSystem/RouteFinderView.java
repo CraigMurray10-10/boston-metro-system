@@ -1,6 +1,7 @@
 package BostonMetroSystem;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class RouteFinderView extends JFrame{
@@ -14,26 +15,32 @@ public class RouteFinderView extends JFrame{
     private JTextField startSearch = new JTextField("Search", 10);
     private JTextField endSearch = new JTextField("Search",10);
     private JButton calcRouteButton = new JButton("Find Route");
-
+    private JList<Station> list;
+    private ArrayList<Station> stations;
 
     public RouteFinderView(){
-        JPanel findRoutePanel = new JPanel();
 
+    }
+    public void init(ArrayList<Station> stations){
+        JPanel panel = new JPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+        panel.setLayout(new GridLayout(3, 3,2,4));
+        panel.add(startLabel);
+        panel.add(endLabel);
+        panel.add(routeLabel);
+        startDest.setSize(10,10);
+        panel.add(startDest);
+        panel.add(endDest);
+        panel.add(route);
+        panel.add(startSearch);
+        panel.add(endSearch);
+        panel.add(calcRouteButton);
+
+        this.add(panel, BorderLayout.CENTER);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 200);
-
-        findRoutePanel.setLayout(new GridLayout(3, 3));
-        findRoutePanel.add(startLabel);
-        findRoutePanel.add(endLabel);
-        findRoutePanel.add(routeLabel);
-        findRoutePanel.add(startDest);
-        findRoutePanel.add(endDest);
-        findRoutePanel.add(route);
-        findRoutePanel.add(startSearch);
-        findRoutePanel.add(endSearch);
-        findRoutePanel.add(calcRouteButton);
-
-        this.add(findRoutePanel);
+        this.setTitle("Route Finder - Boston Metro System");
+        this.pack();
+        this.setVisible(true);
     }
     public String getStartDest(){
         return startDest.getText();
@@ -54,9 +61,9 @@ public class RouteFinderView extends JFrame{
         return endSearch.getText();
     }
 
-    public void setStartDest(String start){
-        startDest.setText(start);
-    }
+//    public void setStartDest(){
+//
+//    }
     public void setEndDest(String end){
         endDest.setText(end);
     }
