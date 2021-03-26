@@ -10,7 +10,7 @@ public class RouteFinderController {
         this.theView = theView;
         this.theModel = theModel;
 
-        this.theView.init(getStations());
+        //this.theView.init(getStations());
 //        this.theView.addCalcRouteListener(new CalculateListener());
     }
     public ArrayList<Station> getStations(){
