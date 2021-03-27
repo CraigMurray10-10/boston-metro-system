@@ -6,8 +6,8 @@ public class RouteFinderController {
     private RouteFinderView theView;
     private RouteFinderModel theModel;
 
-    public RouteFinderController(RouteFinderView theView, RouteFinderModel theModel){
-        this.theView = theView;
+    public RouteFinderController(RouteFinderModel theModel){
+        //this.theView = theView;
         this.theModel = theModel;
 
         //this.theView.init(getStations());
