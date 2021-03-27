@@ -38,7 +38,7 @@ public class MVCRouteFinder extends Application {
         window = stage;
         window.setTitle("Route Finder - Boston Metro System");
 
-        scene = new Scene(theView.asParent());
+        scene = new Scene(theView.asParent(), 700, 500);
         window.setScene(scene);
         window.show();
     }

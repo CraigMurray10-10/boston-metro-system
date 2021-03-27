@@ -3,7 +3,6 @@ package BostonMetroSystem;
 import java.util.ArrayList;
 
 public class RouteFinderController {
-    private RouteFinderView theView;
     private RouteFinderModel theModel;
 
     public RouteFinderController(RouteFinderModel theModel){

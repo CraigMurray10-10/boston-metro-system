@@ -14,8 +14,6 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 
 public class RouteFinderView{
-    private RouteFinderModel theModel;
-    private RouteFinderController theController;
     javafx.scene.control.Button button;
     BorderPane pane;
     ListView<String> startListView;
@@ -29,9 +27,6 @@ public class RouteFinderView{
     private ArrayList<Station> stations;
 
     public RouteFinderView(RouteFinderController theController, RouteFinderModel theModel){
-        this.theController = theController;
-        this.theModel = theModel;
-
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
         start = new javafx.scene.control.Label("Start Destination");
