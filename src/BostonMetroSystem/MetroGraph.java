@@ -3,37 +3,41 @@ package BostonMetroSystem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MetroGraph implements Graph<Station, StationColorPair> {
-    HashMap <Station, List<StationColorPair>> adjStations;
+public class MetroGraph implements Graph<Station, StationColourPair>{
+    //maps a stationID to a list of its neighbours
+    //stationcolourpair contains neighbouring stationID and line colour
+    private Map<Integer, List<StationColourPair>>  adjVertices;
 
-    public MetroGraph() {
-        //RouteCalculator routeCalc = new RouteCalculator(station1, station2);
-        //Parser metroParser = new Parser();
-        adjStations = new HashMap<>();
-    }
-
-    public  HashMap <Station, List<StationColorPair>> getAllStations(){
-        return adjStations;
-    }
-
-    public void addVertex(Station newStation) {
-        //vertex added to list of vertices with empty array list
-        adjStations.putIfAbsent(newStation, new ArrayList<>());
+    public MetroGraph(){
+        adjVertices = new HashMap<>();
 
     }
 
-    public void addEdge(Station src, Station dest, String color) {
-        StationColorPair srcToDest = new StationColorPair(dest, color);
-        StationColorPair destToSrc = new StationColorPair(src, color);
-
-
-        adjStations.get(src).add(srcToDest);
-        adjStations.get(dest).add(destToSrc);
+    //adds id of given station to graph
+    public void addVertex(Station station){
+        //adds vertex using station id as a map
+        adjVertices.putIfAbsent(station.getID(), new ArrayList<>());
     }
 
-    public List<StationColorPair> getAdjVertices(Station station) {
-        return adjStations.get(station);
+    //takes all neighbours of a given station, converts into stationcolour pairs
+    //then appends to list.
+    public void addEdge(Station station){
+        List<Neighbour> neighbours = station.getNeighbours();
+
+        for(int i = 0; i < neighbours.size(); i++){
+            StationColourPair firstNeighbour = new StationColourPair(neighbours.get(i).getFirst(),neighbours.get(i).getColour());
+            StationColourPair secondNeighbour = new StationColourPair(neighbours.get(i).getSecond(),neighbours.get(i).getColour());
+
+            adjVertices.get(station.getID()).add(firstNeighbour);
+            adjVertices.get(station.getID()).add(secondNeighbour);
+        }
     }
+
+    public List<StationColourPair> getAdjVertices(Station s){
+        return adjVertices.get(s.getID());
+    }
+
 
 }
