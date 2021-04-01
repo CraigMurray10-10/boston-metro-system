@@ -12,6 +12,7 @@ public class RouteFinderModel {
         this.stations = this.parseFile();
         this.graph = new MetroGraph();
         this.initialiseGraph();
+        this.calculateRoute();
     }
 
     public ArrayList parseFile(){
@@ -33,6 +34,17 @@ public class RouteFinderModel {
 
         for(Station s: stations){
             graph.addEdge(s);
+        }
+
+    }
+
+    public void calculateRoute(){
+        RouteCalculator rc = new RouteCalculator();
+
+        List<Integer> route = rc.findRoute(graph, stations.get(0), stations.get(6));
+
+        for(int i : route){
+            System.out.println(i);
         }
 
     }

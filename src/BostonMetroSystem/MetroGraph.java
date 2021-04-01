@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MetroGraph implements Graph<Station, StationColourPair>{
+public class MetroGraph implements Graph<Station, StationColourPair, Integer>{
     //maps a stationID to a list of its neighbours
     //stationcolourpair contains neighbouring stationID and line colour
     private Map<Integer, List<StationColourPair>>  adjVertices;
@@ -35,8 +35,8 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
         }
     }
 
-    public List<StationColourPair> getAdjVertices(Station s){
-        return adjVertices.get(s.getID());
+    public List<StationColourPair> getAdjVertices(Integer s){
+        return adjVertices.get(s);
     }
 
 
