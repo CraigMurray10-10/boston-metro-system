@@ -1,83 +1,70 @@
 package BostonMetroSystem;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import javax.swing.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class RouteFinderView extends JFrame{
+import java.util.ArrayList;
 
-    private JLabel startLabel = new JLabel("Starting Destination");
-    private JLabel endLabel = new JLabel("Ending Destination");
-    private JLabel routeLabel = new JLabel("Route");
-    private JTextField startDest = new JTextField(10);
-    private JTextField endDest = new JTextField(10);
-    private JTextField route = new JTextField(10);
-    private JTextField startSearch = new JTextField("Search", 10);
-    private JTextField endSearch = new JTextField("Search",10);
-    private JButton calcRouteButton = new JButton("Find Route");
+public class RouteFinderView{
+    javafx.scene.control.Button button;
+    BorderPane pane;
+    ListView<String> startListView;
+    ListView<String> endListView;
+    ListView<String> routeListView;
+    javafx.scene.control.Label start;
+    javafx.scene.control.Label end;
+    Label route;
+    TextField searchStart;
+    TextField searchEnd;
+    private ArrayList<Station> stations;
 
+    public RouteFinderView(RouteFinderController theController, RouteFinderModel theModel){
+        pane = new BorderPane();
+        button = new javafx.scene.control.Button("Find Route");
+        start = new javafx.scene.control.Label("Start Destination");
+        end = new javafx.scene.control.Label("End Destination");
+        route = new javafx.scene.control.Label("Route:");
+        searchStart = new javafx.scene.control.TextField();
+        searchStart.setPromptText("Search");
+        searchEnd = new TextField();
+        searchEnd.setPromptText("Search");
 
-    public RouteFinderView(){
-        JPanel findRoutePanel = new JPanel();
+        startListView = new ListView<>();
+        endListView = new ListView<>();
+        routeListView = new ListView<>();
+        routeListView.setFixedCellSize(10);
+        stations = theController.getStations();
+        ObservableList<String> starts = FXCollections.observableArrayList();
+        ObservableList<String> ends = FXCollections.observableArrayList();
+        for(Station s: stations){
+            starts.add(s.stationAsString());
+            ends.add(s.stationAsString());
+        }
+        startListView.setItems(starts);
+        startListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 200);
+        endListView.setItems(ends);
+        endListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        findRoutePanel.setLayout(new GridLayout(3, 3));
-        findRoutePanel.add(startLabel);
-        findRoutePanel.add(endLabel);
-        findRoutePanel.add(routeLabel);
-        findRoutePanel.add(startDest);
-        findRoutePanel.add(endDest);
-        findRoutePanel.add(route);
-        findRoutePanel.add(startSearch);
-        findRoutePanel.add(endSearch);
-        findRoutePanel.add(calcRouteButton);
+        VBox leftPane = new VBox(start, startListView, searchStart);
+        VBox middlePane = new VBox(end, endListView, searchEnd);
+        VBox rightPane = new VBox(route, routeListView, button);
 
-        this.add(findRoutePanel);
-    }
-    public String getStartDest(){
-        return startDest.getText();
-    }
-    public String getEndDest(){
-        return endDest.getText();
-    }
-
-    public String getRoute(){
-        return route.getText();
-    }
-
-    public String getStartSearch(){
-        return startSearch.getText();
-    }
-
-    public String getEndSearch(){
-        return endSearch.getText();
-    }
-
-    public void setStartDest(String start){
-        startDest.setText(start);
-    }
-    public void setEndDest(String end){
-        endDest.setText(end);
-    }
-
-    public void setRoute(String r){
-        route.setText(r);
-    }
-
-    public void setStartSearch(String start){
-        startSearch.setText(start);
+        HBox layout = new HBox(20);
+        layout.setPadding(new Insets(20, 20, 20,20));
+        layout.getChildren().addAll(leftPane, middlePane, rightPane);
+        pane.setCenter(layout);
     }
 
-    public void setEndSearch(String end){
-        endSearch.setText(end);
-    }
-
-    void addCalcRouteListener(ActionListener listenerForCalcButton){
-        calcRouteButton.addActionListener(listenerForCalcButton);
-    }
-
-    void displayErrorMessage(String errorMessage){
-        JOptionPane.showMessageDialog(this, errorMessage);
+    public Parent asParent() {
+        return pane ;
     }
 }
