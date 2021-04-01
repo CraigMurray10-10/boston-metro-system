@@ -26,7 +26,13 @@ public class RouteFinderView{
     TextField searchEnd;
     private ArrayList<Station> stations;
 
-    public RouteFinderView(RouteFinderController theController, RouteFinderModel theModel){
+    public RouteFinderView(ArrayList<Station> stations) {
+        this.stations = stations;
+        this.initialiseWindow();
+
+    }
+
+    public void initialiseWindow(){
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
         start = new javafx.scene.control.Label("Start Destination");
@@ -41,7 +47,6 @@ public class RouteFinderView{
         endListView = new ListView<>();
         routeListView = new ListView<>();
         routeListView.setFixedCellSize(10);
-        stations = theController.getStations();
         ObservableList<String> starts = FXCollections.observableArrayList();
         ObservableList<String> ends = FXCollections.observableArrayList();
         for(Station s: stations){
