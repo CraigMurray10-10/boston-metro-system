@@ -36,7 +36,7 @@ public class MVCRouteFinder extends Application {
         theView = new RouteFinderView(theController);
 
 
-        theModel.setUserInputSelectStart(theView.getStartSelectInput());
+        theModel.userInputSelectStart(theView.getStartSelectInput());
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
         theModel.setButtonInput(theView.getButton());
 
