@@ -32,14 +32,19 @@ public class MVCRouteFinder extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         theModel = new RouteFinderModel();
-        theController = new RouteFinderController(theModel);
-        theView = new RouteFinderView(theController, theModel);
+        theController = new RouteFinderController(theModel, theView);
+        theView = new RouteFinderView(theController);
 
+        //theView.setStations(theController.getStations());
         window = stage;
         window.setTitle("Route Finder - Boston Metro System");
 
         scene = new Scene(theView.asParent(), 700, 500);
         window.setScene(scene);
         window.show();
+
+
+        //theView.startListItem();
+        //theView.startListItem();
     }
 }
