@@ -2,6 +2,9 @@ package BostonMetroSystem;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
@@ -82,6 +85,18 @@ public class RouteFinderModel {
 
         });
 
+
+    }
+
+    public void setButtonInput(javafx.scene.control.Button findRouteButton){
+        EventHandler<ActionEvent> click = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("I have been clicked");
+            }
+        };
+
+        findRouteButton.setOnAction(click);
 
     }
 

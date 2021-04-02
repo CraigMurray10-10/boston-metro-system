@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -90,21 +87,13 @@ public class RouteFinderView{
 
 
 
-    public ListView<String> setStartSelectInput(){
+    public ListView<String> getStartSelectInput(){
         return startListView;
     }
 
-    public ListView<String> setEndSelectInput(){return endListView;}
+    public ListView<String> getEndSelectInput(){return endListView;}
 
-
-
-
-
-
-
-
-
-
-
-
+    public Button getButton() {
+        return button;
+    }
 }
