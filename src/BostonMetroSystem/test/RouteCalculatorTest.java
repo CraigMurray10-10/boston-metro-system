@@ -1,4 +1,8 @@
-package BostonMetroSystem;
+package BostonMetroSystem.test;
+import BostonMetroSystem.MetroGraph;
+import BostonMetroSystem.Neighbour;
+import BostonMetroSystem.RouteCalculator;
+import BostonMetroSystem.Station;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +38,7 @@ public class RouteCalculatorTest {
 
         ArrayList<Station> stations = new ArrayList<>(Arrays.asList(s1,s2,s3,s4,s5));
 
-        graph = new MetroGraph(stations);
+        graph = new MetroGraph();
 
         for(Station s: stations){
             graph.addVertex(s);
@@ -61,12 +65,9 @@ public class RouteCalculatorTest {
     public void searchEqualPathLengths(){
         List<Station> route1 = rc.findRoute(graph, s1, s5);
         List<Station> expectedRoute1 = new ArrayList<>(Arrays.asList(s1,s3,s5));
-
-
         assertAll(
                 () -> assertEquals(route1, expectedRoute1)
         );
-
     }
 
     @Test

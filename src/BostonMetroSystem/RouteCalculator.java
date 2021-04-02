@@ -42,6 +42,9 @@ public class RouteCalculator {
                             List<Station> tempPath = new ArrayList<>();
                             tempPath.addAll(currentPath);
                             tempPath.add(nextStatePairs.get(i).getKey());
+                            //weight of the route will be 2* the route size and total switches
+                            //this is so the route size is a bigger factor of the weight - it will not be
+                            //overriden by a route on a single line.
                             agenda.put(tempPath, (this.calculateLineSwitches(tempPath, graph) + tempPath.size() * 2));
                             visited.add(currentNode);
                         }
@@ -87,9 +90,7 @@ public class RouteCalculator {
             }
             currentLineColour = nextLineColour;
         }
-        //weight of the route will be 2* the route size and total switches
-        //this is so the route size is a bigger factor of the weight - it will not be
-        //overriden by a route on a single line.
+
         return totalSwitches;
     }
 
