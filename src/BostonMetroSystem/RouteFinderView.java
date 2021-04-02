@@ -73,25 +73,7 @@ public class RouteFinderView{
         layout.getChildren().addAll(leftPane, middlePane, rightPane);
         pane.setCenter(layout);
 
-        startListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            String selectedItem = "";
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectedItem = startListView.getSelectionModel().getSelectedItem();
-                setStartListSelectedItem(selectedItem);
-            }
 
-        });
-
-        endListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            String selectedItem = "";
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectedItem = endListView.getSelectionModel().getSelectedItem();
-                setEndListSelectedItem(selectedItem);
-            }
-
-        });
 
 
 
@@ -104,25 +86,15 @@ public class RouteFinderView{
         return pane ;
     }
 
-    public String getStartListSelectedItem(){
-        return this.startListSelectedItem;
+
+
+
+
+    public ListView<String> setStartSelectInput(){
+        return startListView;
     }
 
-    public void setStartListSelectedItem(String selectedItem){
-
-        this.startListSelectedItem = selectedItem;
-
-    }
-
-    public void setEndListSelectedItem(String seletedItem){
-        this.endListSeletedItem = seletedItem;
-
-    }
-
-    public String getEndListSeletedItem(){
-        return  this.endListSeletedItem;
-    }
-
+    public ListView<String> setEndSelectInput(){return endListView;}
 
 
 

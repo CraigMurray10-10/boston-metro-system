@@ -35,6 +35,10 @@ public class MVCRouteFinder extends Application {
         theController = new RouteFinderController(theModel, theView);
         theView = new RouteFinderView(theController);
 
+
+        theModel.setUserInputSelectStart(theView.setStartSelectInput());
+        theModel.setUserInputSelectEnd(theView.setEndSelectInput());
+
         //theView.setStations(theController.getStations());
         window = stage;
         window.setTitle("Route Finder - Boston Metro System");
