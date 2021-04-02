@@ -10,7 +10,7 @@ public class RouteFinderModel {
 
     public RouteFinderModel(){
         this.stations = this.parseFile();
-        this.graph = new MetroGraph();
+        this.graph = new MetroGraph(this.stations);
         this.initialiseGraph();
         this.calculateRoute();
     }
@@ -41,12 +41,20 @@ public class RouteFinderModel {
     public void calculateRoute(){
         RouteCalculator rc = new RouteCalculator();
 
-        List<Integer> route = rc.findRoute(graph, stations.get(2), stations.get(28));
+        List<Station> route = rc.findRoute(graph, stations.get(2), stations.get(28));
 
-        for(int i : route){
-            System.out.println(i);
+        for(Station i : route){
+            System.out.println(i.getID() + " " + i.getStation());
         }
 
+
+
     }
+
+
+
+
+
+
 
 }
