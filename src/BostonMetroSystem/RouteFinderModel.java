@@ -41,7 +41,8 @@ public class RouteFinderModel {
     public void calculateRoute(){
         RouteCalculator rc = new RouteCalculator();
 
-        List<Station> route = rc.findRoute(graph, stations.get(2), stations.get(28));
+        //TODO: put users inputted source and destination
+        List<Station> route = rc.findRoute(graph, stations.get(32), stations.get(26));
 
         for(Station i : route){
             System.out.println(i.getID() + " " + i.getStation());
