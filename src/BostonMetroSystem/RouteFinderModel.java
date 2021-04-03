@@ -84,8 +84,6 @@ public class RouteFinderModel {
             }
 
         });
-
-
     }
 
     public void setStartSelectInput(String input){
