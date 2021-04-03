@@ -45,8 +45,9 @@ public class MVCRouteFinder extends Application {
         arrayList.add("2 Wonderland");
         arrayList.add("hello");
 
-        theView.displayRoute(arrayList);
-        theView.test();
+        //theView.displayRoute(arrayList);
+        theView.setRoute(arrayList);
+
 
         //theView.setStations(theController.getStations());
         window = stage;

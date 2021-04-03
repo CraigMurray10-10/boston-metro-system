@@ -16,17 +16,20 @@ public class RouteFinderModel {
     private MetroGraph graph;
     private String startSelectInput = "";
     private String endSelectInput = "";
-
+    private int startID ;
+    private int endID ;
+    Parser parse = new Parser();
 
     public RouteFinderModel(){
         this.stations = this.parseFile();
         this.graph = new MetroGraph();
         this.initialiseGraph();
-        this.calculateRoute();
+        this.startID =0;
+        this.endID =0;
     }
 
     public ArrayList parseFile(){
-        Parser parse = new Parser();
+
         ArrayList<Station> stations = parse.parseFile();
 
         return stations;
@@ -48,14 +51,17 @@ public class RouteFinderModel {
 
     }
 
-    public void calculateRoute(){
+
+    public void calculateRoute(int startStationID, int endStationID){
         RouteCalculator rc = new RouteCalculator();
 
-        List<Integer> route = rc.findRoute(graph, stations.get(0), stations.get(6));
+        List<Integer> route = rc.findRoute(graph, stations.get(startStationID -1), stations.get(endStationID -1));
+
 
         for(int i : route){
             System.out.println(i);
         }
+
 
     }
 
@@ -90,13 +96,13 @@ public class RouteFinderModel {
 
     public void setStartSelectInput(String input){
            this.startSelectInput = input;
-           System.out.println(startSelectInput);
+
     }
 
 
     public void setEndSelectInput(String input){
         this.endSelectInput = input;
-        System.out.println(endSelectInput);
+
     }
 
     public String getStartSelectInput(){
@@ -111,8 +117,18 @@ public class RouteFinderModel {
         EventHandler<ActionEvent> click = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Start is " + getStartSelectInput());
-                System.out.println("End is " + getEndSelectInput());
+                String getStart = getStartSelectInput();
+                String getEnd = getEndSelectInput();
+
+                setStartID(getStart);
+                setEndID(getEnd);
+
+                int stationStartID = getStartID();
+                int stationEndID = getEndID();
+
+
+                calculateRoute(stationStartID, stationEndID);
+
             }
         };
 
@@ -120,9 +136,31 @@ public class RouteFinderModel {
 
     }
 
-    public void setRouteOutput(ListView<String> routeOutput){
+    public void setStartID(String startID1){
+        //converting id into an int
+        String parsedId = parse.parseVal(startID1);
+        int id = Integer.parseInt(parsedId);
+
+
+        this.startID = id;
+    }
+
+    public void setEndID(String endID1){
+
+        String parsedId = parse.parseVal(endID1);
+        int id = Integer.parseInt(parsedId);
+        this.endID = id;
 
     }
+
+    public int getStartID(){
+        return this.startID;
+    }
+
+    public int getEndID(){
+        return this.endID;
+    }
+
 
 
 }
