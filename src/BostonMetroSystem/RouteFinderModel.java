@@ -1,5 +1,12 @@
 package BostonMetroSystem;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.control.ListView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +14,9 @@ public class RouteFinderModel {
     //used to store stations that can be returned to view and also used to initialise graph
     private ArrayList<Station> stations;
     private MetroGraph graph;
+    private String startSelectInput = "";
+    private String endSelectInput = "";
+
 
     public RouteFinderModel(){
         this.stations = this.parseFile();
@@ -48,9 +58,72 @@ public class RouteFinderModel {
             System.out.println(i.getID() + " " + i.getStation());
         }
 
+    }
+
+
+    public void userInputSelectStart(ListView<String> startInput){
+        startInput.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            String selectedItem = "";
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                selectedItem = startInput.getSelectionModel().getSelectedItem();
+                setStartSelectInput(selectedItem);
+            }
+
+        });
+
+    }
+
+    public void setUserInputSelectEnd(ListView<String> endInput){
+        endInput.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            String selectedItem = "";
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                selectedItem = endInput.getSelectionModel().getSelectedItem();
+                setEndSelectInput(selectedItem);
+            }
+
+        });
 
 
     }
+
+    public void setStartSelectInput(String input){
+        this.startSelectInput = input;
+        System.out.println(startSelectInput);
+    }
+
+
+    public void setEndSelectInput(String input){
+        this.endSelectInput = input;
+        System.out.println(endSelectInput);
+    }
+
+    public String getStartSelectInput(){
+        return  this.startSelectInput;
+    }
+
+    public String getEndSelectInput(){
+        return  this.endSelectInput;
+    }
+
+    public void setButtonInput(javafx.scene.control.Button findRouteButton){
+        EventHandler<ActionEvent> click = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Start is " + getStartSelectInput());
+                System.out.println("End is " + getEndSelectInput());
+            }
+        };
+
+        findRouteButton.setOnAction(click);
+
+    }
+
+    public void setRouteOutput(ListView<String> routeOutput){
+
+    }
+
 
 
 

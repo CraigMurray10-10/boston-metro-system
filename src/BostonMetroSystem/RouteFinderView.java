@@ -3,10 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -24,15 +21,23 @@ public class RouteFinderView{
     Label route;
     TextField searchStart;
     TextField searchEnd;
+    ObservableList<String> starts;
+    ObservableList<String> ends;
+
+
     private ArrayList<Station> stations;
 
     public RouteFinderView(ArrayList<Station> stations) {
         this.stations = stations;
+
         this.initialiseWindow();
 
     }
 
     public void initialiseWindow(){
+        starts = FXCollections.observableArrayList();
+        ends = FXCollections.observableArrayList();
+
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
         start = new javafx.scene.control.Label("Start Destination");
@@ -72,4 +77,15 @@ public class RouteFinderView{
     public Parent asParent() {
         return pane ;
     }
+
+    public ListView<String> getStartSelectInput(){
+        return startListView;
+    }
+
+    public ListView<String> getEndSelectInput(){return endListView;}
+
+    public Button getButton() {
+        return button;
+    }
+
 }
