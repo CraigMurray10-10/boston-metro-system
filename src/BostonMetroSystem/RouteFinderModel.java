@@ -14,8 +14,8 @@ public class RouteFinderModel {
     //used to store stations that can be returned to view and also used to initialise graph
     private ArrayList<Station> stations;
     private MetroGraph graph;
-    private String startSelectInput = "";
-    private String endSelectInput = "";
+    private String startSelectInput;
+    private String endSelectInput;
     private int startID ;
     private int endID ;
     Parser parse = new Parser();
@@ -26,6 +26,8 @@ public class RouteFinderModel {
         this.initialiseGraph();
         this.startID =0;
         this.endID =0;
+        this.startSelectInput = "";
+        this.endSelectInput = "";
     }
 
     public ArrayList parseFile(){
@@ -59,7 +61,7 @@ public class RouteFinderModel {
 
 
         for(int i : route){
-            System.out.println(i);
+            setStationName(i);
         }
 
 
@@ -129,6 +131,8 @@ public class RouteFinderModel {
 
                 calculateRoute(stationStartID, stationEndID);
 
+//                setStationName(stationStartID);
+
             }
         };
 
@@ -140,8 +144,6 @@ public class RouteFinderModel {
         //converting id into an int
         String parsedId = parse.parseVal(startID1);
         int id = Integer.parseInt(parsedId);
-
-
         this.startID = id;
     }
 
@@ -159,6 +161,17 @@ public class RouteFinderModel {
 
     public int getEndID(){
         return this.endID;
+    }
+
+    public void setStationName(int stationID){
+
+
+        for(Station station : stations){
+            if(station.getID() == stationID){
+                System.out.println(station.stationAsString());
+            }
+        }
+
     }
 
 

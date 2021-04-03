@@ -49,6 +49,7 @@ public class MVCRouteFinder extends Application {
         theView.setRoute(arrayList);
 
 
+
         //theView.setStations(theController.getStations());
         window = stage;
         window.setTitle("Route Finder - Boston Metro System");
