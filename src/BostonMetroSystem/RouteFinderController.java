@@ -12,12 +12,11 @@ public class RouteFinderController {
         this.theModel = new RouteFinderModel();
         this.theView = new RouteFinderView(theModel.getStations());
 
-
         theModel.userInputSelectStart(theView.getStartSelectInput());
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
+        theModel.searchStartUserInput(theView.getSearchStart(), theView.starts);
+        theModel.searchEndUserInput(theView.getSearchEnd(), theView.ends);
         theModel.setButtonInput(theView.getButton());
-
-
     }
 
     public Parent getParent(){

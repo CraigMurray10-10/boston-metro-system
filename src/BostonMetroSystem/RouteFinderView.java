@@ -1,6 +1,7 @@
 package BostonMetroSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -24,14 +25,12 @@ public class RouteFinderView{
     ObservableList<String> starts;
     ObservableList<String> ends;
 
-
     private ArrayList<Station> stations;
 
     public RouteFinderView(ArrayList<Station> stations) {
         this.stations = stations;
 
         this.initialiseWindow();
-
     }
 
     public void initialiseWindow(){
@@ -52,8 +51,6 @@ public class RouteFinderView{
         endListView = new ListView<>();
         routeListView = new ListView<>();
         routeListView.setFixedCellSize(10);
-        ObservableList<String> starts = FXCollections.observableArrayList();
-        ObservableList<String> ends = FXCollections.observableArrayList();
         for(Station s: stations){
             starts.add(s.stationAsString());
             ends.add(s.stationAsString());
@@ -83,6 +80,14 @@ public class RouteFinderView{
     }
 
     public ListView<String> getEndSelectInput(){return endListView;}
+
+    public TextField getSearchStart(){
+        return searchStart;
+    }
+
+    public TextField getSearchEnd(){
+        return searchEnd;
+    }
 
     public Button getButton() {
         return button;
