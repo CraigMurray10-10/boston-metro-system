@@ -40,6 +40,14 @@ public class MVCRouteFinder extends Application {
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
         theModel.setButtonInput(theView.getButton());
 
+        ArrayList<String> arrayList = new ArrayList();
+        arrayList.add("1 OakGrove");
+        arrayList.add("2 Wonderland");
+        arrayList.add("hello");
+
+        theView.displayRoute(arrayList);
+        theView.test();
+
         //theView.setStations(theController.getStations());
         window = stage;
         window.setTitle("Route Finder - Boston Metro System");

@@ -18,7 +18,8 @@ public class RouteFinderView{
     BorderPane pane;
     ListView<String> startListView;
     ListView<String> endListView;
-    ListView<String> routeListView;
+    ListView<String> displayRouteListView;
+    ListView<String> getRouteListView;
     javafx.scene.control.Label start;
     javafx.scene.control.Label end;
     Label route;
@@ -26,9 +27,9 @@ public class RouteFinderView{
     TextField searchEnd;
     ObservableList<String> starts = FXCollections.observableArrayList();
     ObservableList<String> ends = FXCollections.observableArrayList();
+    ObservableList<String> routes = FXCollections.observableArrayList();
 
-    String startListSelectedItem;
-    String endListSeletedItem;
+
     private ArrayList<Station> stations;
 
 
@@ -47,8 +48,9 @@ public class RouteFinderView{
         stations = theController.getStations();
         startListView = new ListView<>();
         endListView = new ListView<>();
-        routeListView = new ListView<>();
-        routeListView.setFixedCellSize(10);
+        displayRouteListView = new ListView<>();
+        displayRouteListView.setFixedCellSize(10);
+        getRouteListView =new ListView<>();
 
         for (Station s : this.stations) {
             starts.add(s.stationAsString());
@@ -61,9 +63,13 @@ public class RouteFinderView{
         endListView.setItems(ends);
         endListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+        displayRouteListView = test();
+
+
+
         VBox leftPane = new VBox(start, startListView, searchStart);
         VBox middlePane = new VBox(end, endListView, searchEnd);
-        VBox rightPane = new VBox(route, routeListView, button);
+        VBox rightPane = new VBox(route, displayRouteListView, button);
 
         HBox layout = new HBox(20);
         layout.setPadding(new Insets(20, 20, 20, 20));
@@ -95,5 +101,30 @@ public class RouteFinderView{
 
     public Button getButton() {
         return button;
+    }
+
+    public void displayRoute(@org.jetbrains.annotations.NotNull ArrayList<String> routeList){
+
+        ListView<String> tempListView = new ListView<>();
+
+        for(String route : routeList){
+            routes.add(route);
+
+        }
+
+
+        tempListView.setItems(routes);
+
+        getRouteListView = tempListView;
+
+        System.out.println(getRouteListView.getItems().toString());
+
+
+    }
+
+    public ListView<String> test(){
+        System.out.println(getRouteListView.getItems().toString());
+       return getRouteListView;
+
     }
 }
