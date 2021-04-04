@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ public class RouteFinderModel {
         this.stations = this.parseFile();
         this.graph = new MetroGraph();
         this.initialiseGraph();
-        /*this.calculateRoute();*/
         this.startID =0;
         this.endID =0;
         this.startSelectInput = "";
@@ -125,18 +125,34 @@ public class RouteFinderModel {
                 String getStart = getStartSelectInput();
                 String getEnd = getEndSelectInput();
 
-                setStartID(getStart);
-                setEndID(getEnd);
+                if(getStart == "" && getEnd == ""){
+                    Alert startAndEndEmpty = new Alert(Alert.AlertType.WARNING, "Please select make sure you have selected destinations");
+                    startAndEndEmpty.showAndWait();
+                }
+                else if(getStart !="" && getEnd ==""){
+                    Alert endEmpty = new Alert(Alert.AlertType.WARNING, "End destination empty");
+                    endEmpty.showAndWait();
 
-                int stationStartID = getStartID();
-                int stationEndID = getEndID();
+                }
+                else if(getStart =="" && getEnd!=""){
+                    Alert startEmpty = new Alert(Alert.AlertType.WARNING, "Start destination empty");
+                    startEmpty.showAndWait();
+                }
 
 
-                calculateRoute(stationStartID, stationEndID);
+                if(getStart != "" && getEnd !="") {
+                    setStartID(getStart);
+                    setEndID(getEnd);
 
-                setUpdateRouteListView();
-                getUpdateRouteListView();
+                    int stationStartID = getStartID();
+                    int stationEndID = getEndID();
 
+
+                    calculateRoute(stationStartID, stationEndID);
+
+                    setUpdateRouteListView();
+                    getUpdateRouteListView();
+                }
 
 
             }
@@ -147,7 +163,7 @@ public class RouteFinderModel {
     }
 
     public void setStartID(String startID1){
-        //converting id into an int
+
         String parsedId = parse.parseVal(startID1);
         int id = Integer.parseInt(parsedId);
         this.startID = id;
@@ -183,10 +199,7 @@ public class RouteFinderModel {
     }
 
     public ArrayList<String> getDisplayRoute(){
-        for (int i = 0; i < displayRoute.size(); i++) {
-            System.out.println(displayRoute.get(i));
 
-        }
         return displayRoute;
     }
 
@@ -201,7 +214,7 @@ public class RouteFinderModel {
     }
 
     public ListView<String> getUpdateRouteListView(){
-        //System.out.println(tempList.getItems().toString());
+
         return  tempList;
     }
 
