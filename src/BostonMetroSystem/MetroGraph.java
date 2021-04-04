@@ -5,20 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MetroGraph implements Graph<Station, StationColourPair, Integer>{
+public class MetroGraph implements Graph<Station, StationColourPair>{
     //maps a stationID to a list of its neighbours
     //stationcolourpair contains neighbouring stationID and line colour
-    private Map<Integer, List<StationColourPair>>  adjVertices;
+    private Map<Station, List<StationColourPair>>  adjVertices;
+    private List<Station> stations;
 
     public MetroGraph(){
         adjVertices = new HashMap<>();
-
+        this.stations = new ArrayList<>();
     }
 
     //adds id of given station to graph
     public void addVertex(Station station){
         //adds vertex using station id as a map
-        adjVertices.putIfAbsent(station.getID(), new ArrayList<>());
+        adjVertices.putIfAbsent(station, new ArrayList<>());
+        stations.add(station);
     }
 
     //takes all neighbours of a given station, converts into stationcolour pairs
@@ -27,15 +29,36 @@ public class MetroGraph implements Graph<Station, StationColourPair, Integer>{
         List<Neighbour> neighbours = station.getNeighbours();
 
         for(int i = 0; i < neighbours.size(); i++){
-            StationColourPair firstNeighbour = new StationColourPair(neighbours.get(i).getFirst(),neighbours.get(i).getColour());
-            StationColourPair secondNeighbour = new StationColourPair(neighbours.get(i).getSecond(),neighbours.get(i).getColour());
+            Station firstStationNeighbour = this.findStation(neighbours.get(i).getFirst());
+            Station secondStationNeighbour = this.findStation(neighbours.get(i).getSecond());
 
-            adjVertices.get(station.getID()).add(firstNeighbour);
-            adjVertices.get(station.getID()).add(secondNeighbour);
+            if (firstStationNeighbour != null) {
+                StationColourPair firstNeighbour = new StationColourPair(firstStationNeighbour, neighbours.get(i).getColour());
+                adjVertices.get(station).add(firstNeighbour);
+            }
+
+            if (secondStationNeighbour != null) {
+                StationColourPair secondNeighbour = new StationColourPair(secondStationNeighbour,neighbours.get(i).getColour());
+                adjVertices.get(station).add(secondNeighbour);
+
+            }
         }
     }
 
-    public List<StationColourPair> getAdjVertices(Integer s){
+    public Station findStation(int stationNumber){
+        for (Station st : stations){
+            if (st.getID() == stationNumber){
+                return st;
+            }
+        }
+        return null;
+    }
+
+    public List<Station> getAllVertices(){
+        return this.stations;
+    }
+
+    public List<StationColourPair> getAdjVertices(Station s){
         return adjVertices.get(s);
     }
 

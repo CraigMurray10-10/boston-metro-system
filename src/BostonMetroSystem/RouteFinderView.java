@@ -34,11 +34,16 @@ public class RouteFinderView{
 
 
     private ArrayList<Station> stations;
+    public RouteFinderView(ArrayList<Station> stations) {
+        this.stations = stations;
+
+        this.initialiseWindow();
+    }
 
 
 
 
-    public RouteFinderView(RouteFinderController theController) {
+    public void initialiseWindow() {
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
         start = new javafx.scene.control.Label("Start Destination");
@@ -48,7 +53,6 @@ public class RouteFinderView{
         searchStart.setPromptText("Search");
         searchEnd = new TextField();
         searchEnd.setPromptText("Search");
-        stations = theController.getStations();
         startListView = new ListView<>();
         endListView = new ListView<>();
         routeListView = new ListView<>();

@@ -2,16 +2,16 @@ package BostonMetroSystem;
 
 import java.util.Map;
 
-public class StationColourPair implements Map.Entry<Integer,String>{
-    private int key;
+public class StationColourPair extends Pair<Station,String>{
+    private Station key;
     private String color;
 
-    public StationColourPair(int key, String color){
+    public StationColourPair(Station key, String color){
         this.key = key;
         this.color = color;
     }
     @Override
-    public Integer getKey() {
+    public Station getKey() {
         return this.key;
     }
 
@@ -20,7 +20,7 @@ public class StationColourPair implements Map.Entry<Integer,String>{
         return this.color;
     }
 
-    @Override
+
     public String setValue(String value) {
         String oldColor = this.color;
         this.color = value;

@@ -65,10 +65,10 @@ public class RouteFinderModel {
     public void calculateRoute(int startStationID, int endStationID){
         RouteCalculator rc = new RouteCalculator();
 
-        List<Integer> route = rc.findRoute(graph, stations.get(startStationID -1), stations.get(endStationID -1));
+        List<Station> route = rc.findRoute(graph, stations.get(startStationID -1), stations.get(endStationID -1));
 
 
-        for(int i : route){
+        for(Station i : route){
            setStationDisplayRoute(i);
         }
 
@@ -156,6 +156,8 @@ public class RouteFinderModel {
         String parsedId = parse.parseVal(startID1);
         int id = Integer.parseInt(parsedId);
         this.startID = id;
+
+
     }
 
     public void setEndID(String endID1){
@@ -174,11 +176,11 @@ public class RouteFinderModel {
         return this.endID;
     }
 
-    public void setStationDisplayRoute(int stationID){
+    public void setStationDisplayRoute(Station stationID){
 
 
         for(Station station : stations){
-            if(station.getID() == stationID){
+            if(station == stationID){
                displayRoute.add(station.stationAsString());
             }
         }

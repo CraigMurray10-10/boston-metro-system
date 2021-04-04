@@ -1,29 +1,30 @@
 package BostonMetroSystem;
 
+import javafx.scene.Parent;
+
 import java.util.ArrayList;
 
 public class RouteFinderController {
     private RouteFinderModel theModel;
     private RouteFinderView theView;
 
-    public RouteFinderController(RouteFinderModel theModel, RouteFinderView theView){
-        this.theView = theView;
-        this.theModel = theModel;
+    public RouteFinderController(){
+        this.theModel = new RouteFinderModel();
+        this.theView = new RouteFinderView(theModel.getStations());
+
         theModel.userInputSelectStart(theView.getStartSelectInput());
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
+       /* theView.searchStartUserInput(theView.getSearchStart(), theView.starts);
+        theView.searchEndUserInput(theView.getSearchEnd(), theView.ends);*/
         theModel.setButtonInput(theView.getButton());
         theView.updateRoutes(theModel.getUpdateRouteListView());
 
     }
+
+    public Parent getParent(){
+        return this.theView.asParent();
+    }
     public ArrayList<Station> getStations(){
         return theModel.parseFile();
     }
-
-
-
-
-
-
-
-
 }
