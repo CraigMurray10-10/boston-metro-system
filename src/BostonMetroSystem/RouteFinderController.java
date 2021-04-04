@@ -14,8 +14,8 @@ public class RouteFinderController {
 
         theModel.userInputSelectStart(theView.getStartSelectInput());
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
-        theModel.searchStartUserInput(theView.getSearchStart(), theView.starts);
-        theModel.searchEndUserInput(theView.getSearchEnd(), theView.ends);
+        theView.searchStartUserInput(theView.getSearchStart(), theView.starts);
+        theView.searchEndUserInput(theView.getSearchEnd(), theView.ends);
         theModel.setButtonInput(theView.getButton());
     }
 
