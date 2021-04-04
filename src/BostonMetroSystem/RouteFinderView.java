@@ -114,7 +114,6 @@ public class RouteFinderView{
 
 
     public ObservableList<String> getRoutes(){
-
         return routes;
     }
 
@@ -131,25 +130,6 @@ public class RouteFinderView{
 
 
     }
-
-
-
-
-  /*  public void arrayListChange(){
-        routeListView.getItems().addListener(new ListChangeListener() {
-            @Override
-            public void onChanged(ListChangeListener.Change change) {
-                System.out.println("Detected a change! ");
-            }
-        });
-
-
-
-
-    }*/
-
-
-
 
 
 
