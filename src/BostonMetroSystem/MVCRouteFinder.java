@@ -47,7 +47,6 @@ public class MVCRouteFinder extends Application {
         window.show();
 
 
-        //theView.startListItem();
-        //theView.startListItem();
+
     }
 }
