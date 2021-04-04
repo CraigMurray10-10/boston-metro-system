@@ -1,4 +1,6 @@
 package BostonMetroSystem;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -12,11 +14,13 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 
 public class RouteFinderView{
+
     javafx.scene.control.Button button;
     BorderPane pane;
     ListView<String> startListView;
     ListView<String> endListView;
     ListView<String> routeListView;
+    ListView<String> tempRoutesListView;
     javafx.scene.control.Label start;
     javafx.scene.control.Label end;
     Label route;
@@ -24,19 +28,23 @@ public class RouteFinderView{
     TextField searchEnd;
     ObservableList<String> starts;
     ObservableList<String> ends;
+    ObservableList<String> routes = FXCollections.observableArrayList();
+
+
 
     private ArrayList<Station> stations;
-
     public RouteFinderView(ArrayList<Station> stations) {
         this.stations = stations;
 
         this.initialiseWindow();
     }
 
-    public void initialiseWindow(){
-        starts = FXCollections.observableArrayList();
-        ends = FXCollections.observableArrayList();
 
+    /*public void initialiseWindow() {
+
+    }*/
+
+    public void initialiseWindow() {
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
         start = new javafx.scene.control.Label("Start Destination");
@@ -46,20 +54,33 @@ public class RouteFinderView{
         searchStart.setPromptText("Search");
         searchEnd = new TextField();
         searchEnd.setPromptText("Search");
-
         startListView = new ListView<>();
         endListView = new ListView<>();
         routeListView = new ListView<>();
-        routeListView.setFixedCellSize(10);
-        for(Station s: stations){
+        starts = FXCollections.observableArrayList();
+        ends = FXCollections.observableArrayList();
+        routes = getRoutes();
+
+
+        for (Station s : this.stations) {
             starts.add(s.stationAsString());
             ends.add(s.stationAsString());
         }
         startListView.setItems(starts);
         startListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+
         endListView.setItems(ends);
         endListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+
+        routes.add("Hello");
+        routeListView.setItems(routes);
+        routeListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+
+
+
 
         VBox leftPane = new VBox(start, startListView, searchStart);
         VBox middlePane = new VBox(end, endListView, searchEnd);
@@ -69,11 +90,20 @@ public class RouteFinderView{
         layout.setPadding(new Insets(20, 20, 20,20));
         layout.getChildren().addAll(leftPane, middlePane, rightPane);
         pane.setCenter(layout);
+
+
+
+
+
     }
 
-    public Parent asParent() {
-        return pane ;
+
+
+
+    public Parent asParent(){
+        return pane;
     }
+
 
     public ListView<String> getStartSelectInput(){
         return startListView;
@@ -88,6 +118,8 @@ public class RouteFinderView{
     public TextField getSearchEnd(){
         return searchEnd;
     }
+
+    public ListView<String> getRouteListView(){return routeListView;}
 
     public Button getButton() {
         return button;
@@ -131,4 +163,23 @@ public class RouteFinderView{
         });
     }
 
+    public ObservableList<String> getRoutes(){
+        return routes;
+    }
+
+    public void setRoutes(ArrayList<String> route){
+        this.routes.clear();
+        this.routes.addAll(route);
+        System.out.println(route);
+
+    }
+
+
+    public void updateRoutes(ListView<String> getRoutes){
+        routeListView.setItems(getRoutes.getItems());
+
+
+    }
+
 }
+
