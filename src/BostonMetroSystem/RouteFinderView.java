@@ -126,52 +126,46 @@ public class RouteFinderView{
     }
 
     public void searchStartUserInput(TextField startInput, ObservableList<String> starts){
-        System.out.println("checking start list " + starts.size());
+
+
         FilteredList<String> filterStart = new FilteredList<>(starts, item -> true);
 
         startInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
 
             if(newValue == null || newValue.length() == 0){
                 filterStart.setPredicate(item -> true);
                 this.startListView.setItems(filterStart);
-                System.out.println(filterStart + " " + filterStart.size());
+
             } else {
                 filterStart.setPredicate(item -> item.contains(newValue));
                 this.startListView.setItems(filterStart);
-                System.out.println(filterStart + " " + filterStart.size());
+
             }
         });
     }
 
     public void searchEndUserInput(TextField startInput, ObservableList<String> ends){
-        System.out.println("checking start list " + ends.size());
+
         FilteredList<String> filterEnd = new FilteredList<>(ends, item -> true);
 
         startInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
 
             if(newValue == null || newValue.length() == 0){
                 filterEnd.setPredicate(item -> true);
                 this.endListView.setItems(filterEnd);
-                System.out.println(filterEnd + " " +filterEnd.size());
+
             } else {
                 filterEnd.setPredicate(item -> item.contains(newValue));
                 this.endListView.setItems(filterEnd);
-                System.out.println(filterEnd + " " +filterEnd.size());
+
             }
         });
     }
 
     public ObservableList<String> getRoutes(){
         return routes;
-    }
-
-    public void setRoutes(ArrayList<String> route){
-        this.routes.clear();
-        this.routes.addAll(route);
-        System.out.println(route);
-
     }
 
 
