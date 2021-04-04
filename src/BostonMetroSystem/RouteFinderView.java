@@ -15,20 +15,20 @@ import java.util.ArrayList;
 
 public class RouteFinderView{
 
-    javafx.scene.control.Button button;
-    BorderPane pane;
-    ListView<String> startListView;
-    ListView<String> endListView;
-    ListView<String> routeListView;
-    ListView<String> tempRoutesListView;
-    javafx.scene.control.Label start;
-    javafx.scene.control.Label end;
-    Label route;
-    TextField searchStart;
-    TextField searchEnd;
-    ObservableList<String> starts;
-    ObservableList<String> ends;
-    ObservableList<String> routes = FXCollections.observableArrayList();
+    private javafx.scene.control.Button button;
+    private BorderPane pane;
+    private ListView<String> startListView;
+    private ListView<String> endListView;
+    private ListView<String> routeListView;
+    private ListView<String> tempRoutesListView;
+    private javafx.scene.control.Label start;
+    private javafx.scene.control.Label end;
+    private Label route;
+    private TextField searchStart;
+    private TextField searchEnd;
+    public ObservableList<String> starts;
+    public ObservableList<String> ends;
+    private ObservableList<String> routes = FXCollections.observableArrayList();
 
 
 
