@@ -22,7 +22,7 @@ public class RouteCalculator {
         int count = 0;
 
         List<Station> visited = new ArrayList<>();
-        while (!agenda.isEmpty() && count < 125) {
+        while (!agenda.isEmpty()) {
             //get first item in agenda to search
             List<Station> currentPath = this.getBestRoute(agenda);
             //gets stationid of last node in path (i.e. node to be expanded)
