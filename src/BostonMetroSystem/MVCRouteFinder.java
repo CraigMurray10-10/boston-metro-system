@@ -40,14 +40,11 @@ public class MVCRouteFinder extends Application {
         theModel.setUserInputSelectEnd(theView.getEndSelectInput());
         theModel.setButtonInput(theView.getButton());
 
-        ArrayList<String> arrayList = new ArrayList();
-        arrayList.add("1 OakGrove");
-        arrayList.add("2 Wonderland");
-        arrayList.add("hello");
+
 
         //theView.displayRoute(arrayList);
-        theView.setRoute(arrayList);
-
+        //theView.setRoute(theModel.getDisplayRoute());
+        theView.setRoutes(theModel.getDisplayRoute());
 
 
         //theView.setStations(theController.getStations());

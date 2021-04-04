@@ -48,7 +48,7 @@ public class RouteFinderView{
         startListView = new ListView<>();
         endListView = new ListView<>();
         routeListView = new ListView<>();
-       // displayRouteListView.setFixedCellSize(10);
+        routes = getRoutes();
 
 
         for (Station s : this.stations) {
@@ -104,6 +104,17 @@ public class RouteFinderView{
         for(String route : test){
             routes.add(route);
         }
+
+    }
+
+    public ObservableList<String> getRoutes(){
+
+        return routes;
+    }
+
+    public void setRoutes(ArrayList<String> route){
+        this.routes.clear();
+        this.routes.addAll(route);
 
     }
 

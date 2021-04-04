@@ -1,7 +1,10 @@
 package BostonMetroSystem;
 
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableListValue;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -16,8 +19,10 @@ public class RouteFinderModel {
     private MetroGraph graph;
     private String startSelectInput;
     private String endSelectInput;
-    private int startID ;
-    private int endID ;
+    private int startID;
+    private int endID;
+    private ArrayList<String> displayRoute;
+
     Parser parse = new Parser();
 
     public RouteFinderModel(){
@@ -28,6 +33,7 @@ public class RouteFinderModel {
         this.endID =0;
         this.startSelectInput = "";
         this.endSelectInput = "";
+        this.displayRoute = new ArrayList<>();
     }
 
     public ArrayList parseFile(){
@@ -61,7 +67,7 @@ public class RouteFinderModel {
 
 
         for(int i : route){
-            setStationName(i);
+           setStationDisplayRoute(i);
         }
 
 
@@ -130,8 +136,9 @@ public class RouteFinderModel {
 
 
                 calculateRoute(stationStartID, stationEndID);
+                getDisplayRoute();
 
-//                setStationName(stationStartID);
+
 
             }
         };
@@ -163,16 +170,26 @@ public class RouteFinderModel {
         return this.endID;
     }
 
-    public void setStationName(int stationID){
+    public void setStationDisplayRoute(int stationID){
 
 
         for(Station station : stations){
             if(station.getID() == stationID){
-                System.out.println(station.stationAsString());
+               displayRoute.add(station.stationAsString());
             }
         }
 
     }
+
+    public ArrayList<String> getDisplayRoute(){
+        for (int i = 0; i < displayRoute.size(); i++) {
+            System.out.println(displayRoute.get(i));
+
+        }
+        return displayRoute;
+    }
+
+
 
 
 
