@@ -42,9 +42,10 @@ public class MVCRouteFinder extends Application {
 
 
 
-        //theView.displayRoute(arrayList);
-        //theView.setRoute(theModel.getDisplayRoute());
-        theView.setRoutes(theModel.getDisplayRoute());
+        theView.updateRoutes(theModel.getUpdateRouteListView());
+
+
+
 
 
         //theView.setStations(theController.getStations());

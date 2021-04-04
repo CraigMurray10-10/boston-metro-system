@@ -22,6 +22,8 @@ public class RouteFinderModel {
     private int startID;
     private int endID;
     private ArrayList<String> displayRoute;
+    private ListView<String> tempList = new ListView<>();
+
 
     Parser parse = new Parser();
 
@@ -136,7 +138,9 @@ public class RouteFinderModel {
 
 
                 calculateRoute(stationStartID, stationEndID);
-                getDisplayRoute();
+
+                setUpdateRouteListView();
+                getUpdateRouteListView();
 
 
 
@@ -188,6 +192,24 @@ public class RouteFinderModel {
         }
         return displayRoute;
     }
+
+    public void setUpdateRouteListView(){
+        ArrayList<String> tempArrayList = getDisplayRoute();
+        tempList.getItems().clear();
+        for(String s: tempArrayList){
+            tempList.getItems().add(s);
+        }
+        tempArrayList.clear();
+
+    }
+
+    public ListView<String> getUpdateRouteListView(){
+        //System.out.println(tempList.getItems().toString());
+        return  tempList;
+    }
+
+
+
 
 
 

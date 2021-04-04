@@ -2,6 +2,7 @@ package BostonMetroSystem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ public class RouteFinderView{
     ListView<String> startListView;
     ListView<String> endListView;
     ListView<String> routeListView;
+    ListView<String> tempRoutesListView;
     javafx.scene.control.Label start;
     javafx.scene.control.Label end;
     Label route;
@@ -27,6 +29,8 @@ public class RouteFinderView{
     ObservableList<String> starts = FXCollections.observableArrayList();
     ObservableList<String> ends = FXCollections.observableArrayList();
     ObservableList<String> routes = FXCollections.observableArrayList();
+
+
 
 
     private ArrayList<Station> stations;
@@ -62,8 +66,13 @@ public class RouteFinderView{
         endListView.setItems(ends);
         endListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+
+        routes.add("Hello");
         routeListView.setItems(routes);
         routeListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+
+
 
 
         VBox leftPane = new VBox(start, startListView, searchStart);
@@ -95,17 +104,14 @@ public class RouteFinderView{
 
     public ListView<String> getEndSelectInput(){return endListView;}
 
+    public ListView<String> getRouteListView(){return routeListView;}
+
     public Button getButton() {
         return button;
     }
 
 
-    public void setRoute(ArrayList<String> test){
-        for(String route : test){
-            routes.add(route);
-        }
 
-    }
 
     public ObservableList<String> getRoutes(){
 
@@ -115,8 +121,36 @@ public class RouteFinderView{
     public void setRoutes(ArrayList<String> route){
         this.routes.clear();
         this.routes.addAll(route);
+        System.out.println(route);
 
     }
+
+
+    public void updateRoutes(ListView<String> getRoutes){
+        routeListView.setItems(getRoutes.getItems());
+
+
+    }
+
+
+
+
+  /*  public void arrayListChange(){
+        routeListView.getItems().addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(ListChangeListener.Change change) {
+                System.out.println("Detected a change! ");
+            }
+        });
+
+
+
+
+    }*/
+
+
+
+
 
 
 
