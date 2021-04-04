@@ -13,10 +13,10 @@ public class Parser {
 
     }
 
-    public ArrayList<String> readFile() {
+    public ArrayList<String> readFile(String filepath) {
 
         try {
-            File myObj = new File("src/BostonMetroSystem/test.txt");
+            File myObj = new File(filepath);
             Scanner myReader = new Scanner(myObj);
             String data = "";
             ArrayList<String> stations = new ArrayList();
@@ -38,9 +38,9 @@ public class Parser {
         return null;
     }
 
-    public ArrayList<Station> parseFile(){
+    public ArrayList<Station> parseFile(String filepath){
         //Get a list of all the stations
-        ArrayList<String> parseStation = this.readFile();
+        ArrayList<String> parseStation = this.readFile(filepath);
         ArrayList<Station> stations = new ArrayList<>();
 
         //loop for every station

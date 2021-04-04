@@ -24,7 +24,7 @@ public class RouteFinderModel {
     Parser parse = new Parser();
 
     public RouteFinderModel(){
-        this.stations = this.parseFile();
+        this.stations = this.parseFile("src/BostonMetroSystem/test.txt");
         this.graph = new MetroGraph();
         this.initialiseGraph();
         this.startID =0;
@@ -34,8 +34,8 @@ public class RouteFinderModel {
         this.displayRoute = new ArrayList<>();
     }
 
-    public ArrayList parseFile(){
-        ArrayList<Station> stations = parse.parseFile();
+    public ArrayList parseFile(String filepath){
+        ArrayList<Station> stations = parse.parseFile(filepath);
 
         return stations;
     }
@@ -214,7 +214,6 @@ public class RouteFinderModel {
     }
 
     public ListView<String> getUpdateRouteListView(){
-
         return  tempList;
     }
 

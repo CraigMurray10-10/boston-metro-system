@@ -24,7 +24,4 @@ public class RouteFinderController {
     public Parent getParent(){
         return this.theView.asParent();
     }
-    public ArrayList<Station> getStations(){
-        return theModel.parseFile();
-    }
 }
