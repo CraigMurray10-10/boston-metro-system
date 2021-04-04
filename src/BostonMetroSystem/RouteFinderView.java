@@ -1,6 +1,7 @@
 package BostonMetroSystem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -24,14 +25,12 @@ public class RouteFinderView{
     ObservableList<String> starts;
     ObservableList<String> ends;
 
-
     private ArrayList<Station> stations;
 
     public RouteFinderView(ArrayList<Station> stations) {
         this.stations = stations;
 
         this.initialiseWindow();
-
     }
 
     public void initialiseWindow(){
@@ -52,8 +51,6 @@ public class RouteFinderView{
         endListView = new ListView<>();
         routeListView = new ListView<>();
         routeListView.setFixedCellSize(10);
-        ObservableList<String> starts = FXCollections.observableArrayList();
-        ObservableList<String> ends = FXCollections.observableArrayList();
         for(Station s: stations){
             starts.add(s.stationAsString());
             ends.add(s.stationAsString());
@@ -84,8 +81,54 @@ public class RouteFinderView{
 
     public ListView<String> getEndSelectInput(){return endListView;}
 
+    public TextField getSearchStart(){
+        return searchStart;
+    }
+
+    public TextField getSearchEnd(){
+        return searchEnd;
+    }
+
     public Button getButton() {
         return button;
+    }
+
+    public void searchStartUserInput(TextField startInput, ObservableList<String> starts){
+        System.out.println("checking start list " + starts.size());
+        FilteredList<String> filterStart = new FilteredList<>(starts, item -> true);
+
+        startInput.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
+            if(newValue == null || newValue.length() == 0){
+                filterStart.setPredicate(item -> true);
+                this.startListView.setItems(filterStart);
+                System.out.println(filterStart + " " + filterStart.size());
+            } else {
+                filterStart.setPredicate(item -> item.contains(newValue));
+                this.startListView.setItems(filterStart);
+                System.out.println(filterStart + " " + filterStart.size());
+            }
+        });
+    }
+
+    public void searchEndUserInput(TextField startInput, ObservableList<String> ends){
+        System.out.println("checking start list " + ends.size());
+        FilteredList<String> filterEnd = new FilteredList<>(ends, item -> true);
+
+        startInput.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("textfield changed from " + oldValue + " to " + newValue);
+
+            if(newValue == null || newValue.length() == 0){
+                filterEnd.setPredicate(item -> true);
+                this.endListView.setItems(filterEnd);
+                System.out.println(filterEnd + " " +filterEnd.size());
+            } else {
+                filterEnd.setPredicate(item -> item.contains(newValue));
+                this.endListView.setItems(filterEnd);
+                System.out.println(filterEnd + " " +filterEnd.size());
+            }
+        });
     }
 
 }
