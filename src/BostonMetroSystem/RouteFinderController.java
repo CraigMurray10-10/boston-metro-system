@@ -9,7 +9,7 @@ public class RouteFinderController {
     private RouteFinderView theView;
 
     /**
-     * RouteFinderController consturctor
+     * RouteFinderController constructor
      */
     public RouteFinderController(){
         this.theModel = new RouteFinderModel();

@@ -6,16 +6,27 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Tests that Parser can successfully read a file and parse the file
+ */
 
 public class ParserTest {
     private Parser parser = new Parser();
     private ArrayList<Station> stations;
     private ArrayList<String> info;
 
+    /**
+     * Runs same code as readFile with an invalid path, tests if this will throw an exception.
+     * @return void
+     */
     @Test
     public void readFileTest(){
         //File shouldn't exist
@@ -35,6 +46,10 @@ public class ParserTest {
                 });
     }
 
+    /**
+     * Tests the parsing method to check that it creates objects matching the data successfully.
+     * @return void
+     */
     @Test
     public void parseFileTest(){
         Station oak = new Station(1, "OakGrove", new ArrayList<>(Arrays.asList(
