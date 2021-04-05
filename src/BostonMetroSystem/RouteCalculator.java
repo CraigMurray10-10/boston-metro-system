@@ -13,6 +13,7 @@ public class RouteCalculator {
     }
 
     /**
+     * Method takes in a graph object, source  and destination and searches the graph for a route between the 2 stations.
      * @param graph
      * @param source
      * @param destination
@@ -68,6 +69,7 @@ public class RouteCalculator {
 
 
     /**
+     * Method takes in a route and graph to calculate the number of line switches that occur.
      * @param route
      * @param graph
      * @return
@@ -110,6 +112,7 @@ public class RouteCalculator {
 
 
     /**
+     * Method takes in a Map representing a queue and returns the path within the route with the smallest weight.
      * @param agenda
      * @return
      */

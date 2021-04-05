@@ -20,6 +20,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     }
 
     /**
+     * Method adds a station object to the graph (where station is a vertex)
      * @param station
      */
     //adds id of given station to graph
@@ -30,6 +31,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     }
 
     /**
+     * Method creates an edge in the graph between 2 existing vertices
      * @param station
      */
     //takes all neighbours of a given station, converts into stationcolour pairs
@@ -55,6 +57,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     }
 
     /**
+     * Method is used when creating edges to take the stationID from a neighbour object and return the station object associated.
      * @param stationNumber
      * @return
      */
@@ -68,12 +71,17 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     }
 
     /**
+     * method used to return all vertices in the graph
      * @return adjVertices.get(s)
      */
     public List<Station> getAllVertices(){
         return this.stations;
     }
 
+    /**
+     * method used to get all adjacent vertices from a single station.
+     * @return adjVertices.get(s)
+     */
     public List<StationColourPair> getAdjVertices(Station s){
         return adjVertices.get(s);
     }

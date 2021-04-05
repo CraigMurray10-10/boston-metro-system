@@ -2,7 +2,7 @@ package BostonMetroSystem;
 
 import java.util.Map;
 
-public class StationColourPair extends Pair<Station,String>{
+public class StationColourPair implements Pair<Station,String>{
     private Station key;
     private String color;
 
@@ -17,6 +17,7 @@ public class StationColourPair extends Pair<Station,String>{
     }
 
     /**
+     * returns the station object
      * @return this.key
      */
     @Override
@@ -25,6 +26,7 @@ public class StationColourPair extends Pair<Station,String>{
     }
 
     /**
+     * returns the color of the line associated (as when use stationColourPair it is always when referring to neighbouring nodes)
      * @return this.color
      */
     @Override
@@ -32,16 +34,6 @@ public class StationColourPair extends Pair<Station,String>{
         return this.color;
     }
 
-
-    /**
-     * @param value
-     * @return
-     */
-    public String setValue(String value) {
-        String oldColor = this.color;
-        this.color = value;
-        return this.color;
-    }
 
 
 }

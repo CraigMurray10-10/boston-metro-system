@@ -38,6 +38,7 @@ public class RouteFinderModel {
     }
 
     /**
+     * Method parses a file into a list of stations
      * @param filepath
      * @return stations
      */

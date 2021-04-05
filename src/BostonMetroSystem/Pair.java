@@ -1,17 +1,6 @@
 package BostonMetroSystem;
 
-public abstract class Pair<K, V> {
-    /**
-     * @return
-     */
-    public K getKey() {
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public V getValue() {
-        return null;
-    }
+public interface Pair<K, V> {
+    public K getKey();
+    public V getValue();
 }

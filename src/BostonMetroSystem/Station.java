@@ -23,6 +23,7 @@ public class Station {
     }
 
     /**
+     * Method used to get station id of an object
      * @return ID
      */
     public int getID() {
@@ -30,6 +31,7 @@ public class Station {
     }
 
     /**
+     * method used to get the station name of an object.
      * @return station
      */
     public String getStation() {
@@ -37,12 +39,14 @@ public class Station {
     }
 
     /**
+     * method used to get the neighbours of the object
      * @return neighbours
      */
     public ArrayList<Neighbour> getNeighbours() {return neighbours;}
 
     /**
-     * @return 
+     * method formats the id and station name as a string that can be outputted and returns said string
+     * @return
      */
     public String stationAsString(){
         return (this.ID + " " + this.station);
