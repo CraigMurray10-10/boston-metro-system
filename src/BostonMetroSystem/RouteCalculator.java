@@ -2,22 +2,26 @@ package BostonMetroSystem;
 
 import java.util.*;
 
+
+/**
+ * Used to search a given graph for a specified route
+ */
 public class RouteCalculator {
 
 
     /**
-     * RouteCalculator constructor
+     * creates initial empty object
      */
     public RouteCalculator(){
 
     }
 
     /**
-     * Method takes in a graph object, source  and destination and searches the graph for a route between the 2 stations.
-     * @param graph
-     * @param source
-     * @param destination
-     * @return
+     * Searches given graph for a route between two vertices
+     * @param graph the graph to be searched
+     * @param source the starting node to begin the search from
+     * @param destination the goal node
+     * @return List<Station>
      */
     public List<Station> findRoute(Graph graph, Station source, Station destination){
         //agenda - will store paths which is why it is a List of Lists.
@@ -69,10 +73,10 @@ public class RouteCalculator {
 
 
     /**
-     * Method takes in a route and graph to calculate the number of line switches that occur.
-     * @param route
-     * @param graph
-     * @return
+     * Calculates number of line switches occuring in a given route from a given graph
+     * @param route the route of which line switches are being calculated from
+     * @param graph the graph which contains said route
+     * @return int
      */
     //this method loops through route & calculates how many line switches occur so this can then get mapped
     //in the calculate route method
@@ -112,9 +116,9 @@ public class RouteCalculator {
 
 
     /**
-     * Method takes in a Map representing a queue and returns the path within the route with the smallest weight.
-     * @param agenda
-     * @return
+     * takes queue and returns route within the queue that has the smallest weight associated
+     * @param agenda the queue that is being used in search
+     * @return List<Station>
      */
     //used to return route with lowest weight in agenda.
     public List<Station> getBestRoute( Map<List<Station>, Integer> agenda){

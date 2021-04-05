@@ -1,15 +1,17 @@
 package BostonMetroSystem;
 
-import java.util.Map;
 
+/**
+ * Implements the pair class to represent adjacent stations and the line colour of the edge between.
+ */
 public class StationColourPair implements Pair<Station,String>{
     private Station key;
     private String color;
 
     /**
-     * StationColourPair constructor
-     * @param key
-     * @param color
+     * creates class object
+     * @param key a station adjacent to a vertex
+     * @param color the colour of the line between the two vertices.
      */
     public StationColourPair(Station key, String color){
         this.key = key;
@@ -17,7 +19,7 @@ public class StationColourPair implements Pair<Station,String>{
     }
 
     /**
-     * returns the station object
+     * returns the station object associated with this
      * @return this.key
      */
     @Override
@@ -26,7 +28,7 @@ public class StationColourPair implements Pair<Station,String>{
     }
 
     /**
-     * returns the color of the line associated (as when use stationColourPair it is always when referring to neighbouring nodes)
+     * returns the color of the line associated with this
      * @return this.color
      */
     @Override

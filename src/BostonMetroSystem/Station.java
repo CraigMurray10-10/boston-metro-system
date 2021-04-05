@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * represents a station within the Metro System
+ */
+
 public class Station {
 
     private int ID;
@@ -12,9 +16,9 @@ public class Station {
 
     /**
      * Station constructor
-     * @param ID
-     * @param station
-     * @param neighbours
+     * @param ID the id of the station
+     * @param station the name of the station
+     * @param neighbours list of neighbouring stations
      */
     public Station(int ID, String station, ArrayList<Neighbour> neighbours){
         this.ID = ID;

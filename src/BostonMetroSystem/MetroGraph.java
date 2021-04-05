@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * used to represent the graph within the boston metro system. Implements graph interface using Station and StationColourPair classes to represent vertices and edges.
+ */
 public class MetroGraph implements Graph<Station, StationColourPair>{
     //maps a stationID to a list of its neighbours
     //stationcolourpair contains neighbouring stationID and line colour
@@ -12,7 +15,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     private List<Station> stations;
 
     /**
-     * MetroGraph constructor
+     * Creates initial empty graph
      */
     public MetroGraph(){
         adjVertices = new HashMap<>();
@@ -21,7 +24,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
 
     /**
      * Method adds a station object to the graph (where station is a vertex)
-     * @param station
+     * @param station vertex to be added to the graph
      */
     //adds id of given station to graph
     public void addVertex(Station station){
@@ -32,7 +35,7 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
 
     /**
      * Method creates an edge in the graph between 2 existing vertices
-     * @param station
+     * @param station vertex of which relationship between adjacent vertices have to be added
      */
     //takes all neighbours of a given station, converts into stationcolour pairs
     //then appends to list.
@@ -58,8 +61,8 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
 
     /**
      * Method is used when creating edges to take the stationID from a neighbour object and return the station object associated.
-     * @param stationNumber
-     * @return
+     * @param stationNumber stationNumber of which associated station object is needed
+     * @return Station
      */
     public Station findStation(int stationNumber){
         for (Station st : stations){

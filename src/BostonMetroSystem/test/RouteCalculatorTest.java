@@ -12,6 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+/**
+ * tests RouteCalculator can successfully calculate a route between nodes
+ */
 public class RouteCalculatorTest {
 
     private MetroGraph graph;
@@ -22,6 +25,11 @@ public class RouteCalculatorTest {
     private Station s4;
     private Station s5;
 
+
+    /**
+     * Creates initial graph to be tested
+     * @return void
+     */
     //initialise graph to be searched
     @BeforeEach
     public void setUp(){
@@ -49,6 +57,11 @@ public class RouteCalculatorTest {
         }
     }
 
+
+    /**
+     * checks correct path is returned when there is only one path with the shortest possible length
+     * @return void
+     */
     @Test
     public void searchNoEqualPathLengths(){
         List<Station> route1 = rc.findRoute(graph, s1, s4);
@@ -61,6 +74,11 @@ public class RouteCalculatorTest {
 
     }
 
+
+    /**
+     * checks correct path is returned when there is more than one possible route with shortest possible length
+     * @return void
+     */
     @Test
     public void searchEqualPathLengths(){
         List<Station> route1 = rc.findRoute(graph, s1, s5);
@@ -70,6 +88,11 @@ public class RouteCalculatorTest {
         );
     }
 
+
+    /**
+     * checks that the number of line switches occuring within a route is correct
+     * @return void
+     */
     @Test
     public void calculateLineSwitchTest(){
         List<Station> route1 = rc.findRoute(graph, s1, s5);
@@ -87,6 +110,11 @@ public class RouteCalculatorTest {
         );
     }
 
+
+    /**
+     * checks that the route with lowest integer value associated is returned.
+     * @return void
+     */
      @Test
     public void testBestRoute(){
         //building a fake agenda to check testBestRoute returns route with lowest value

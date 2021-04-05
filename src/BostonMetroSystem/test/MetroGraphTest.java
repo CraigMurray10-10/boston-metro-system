@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
+/**
+ * tests that the methods within MetroGraph can be used to represent a graph.
+ */
 public class MetroGraphTest {
 
     private MetroGraph graph;
@@ -21,6 +24,12 @@ public class MetroGraphTest {
     private Station s4;
     private Station s5;
 
+
+
+    /**
+     * Creates initial graph to be tested
+     * @return void
+     */
     //initialise graph to be searched
     @BeforeEach
     public void setUp(){
@@ -49,6 +58,10 @@ public class MetroGraphTest {
     }
 
 
+    /**
+     * tests vertices are successfully added to graph
+     * @return void
+     */
     @Test
     public void checkVerticesAdded(){
         List<Station> allVertices = graph.getAllVertices();
@@ -58,6 +71,10 @@ public class MetroGraphTest {
 
     }
 
+    /**
+     * tests edges are successfully added
+     * @return void
+     */
     @Test
     public void checkNeighbouringNodes(){
         List<StationColourPair> s1ActualNeighbours = graph.getAdjVertices(s1);
