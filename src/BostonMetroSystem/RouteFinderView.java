@@ -4,7 +4,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -69,26 +73,20 @@ public class RouteFinderView{
         ends = FXCollections.observableArrayList();
         routes = getRoutes();
 
-
         for (Station s : this.stations) {
             starts.add(s.stationAsString());
             ends.add(s.stationAsString());
         }
+
         startListView.setItems(starts);
         startListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
 
         endListView.setItems(ends);
         endListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-
         routes.add("Hello");
         routeListView.setItems(routes);
         routeListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-
-
-
 
         VBox leftPane = new VBox(start, startListView, searchStart);
         VBox middlePane = new VBox(end, endListView, searchEnd);
@@ -98,11 +96,6 @@ public class RouteFinderView{
         layout.setPadding(new Insets(20, 20, 20,20));
         layout.getChildren().addAll(leftPane, middlePane, rightPane);
         pane.setCenter(layout);
-
-
-
-
-
     }
 
 

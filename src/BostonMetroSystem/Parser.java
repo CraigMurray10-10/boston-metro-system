@@ -2,10 +2,8 @@ package BostonMetroSystem;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Parser {
 
@@ -17,8 +15,9 @@ public class Parser {
     }
 
     /**
+     * Reads the file in the given filepath or throws an exception. Will return an ArrayList of Strings representing each line in the read file.
      * @param filepath
-     * @return
+     * @return stations
      */
     public ArrayList<String> readFile(String filepath) {
 
@@ -45,6 +44,11 @@ public class Parser {
         return null;
     }
 
+    /**
+     * Uses readFile to obtain a String populated ArrayList, so that it can parse every line into Station objects.
+     * @param filepath
+     * @return stations
+     */
     public ArrayList<Station> parseFile(String filepath){
         //Get a list of all the stations
         ArrayList<String> parseStation = this.readFile(filepath);
@@ -103,8 +107,9 @@ public class Parser {
 
 
     /**
+     * Parses the first found value of a string containing spaces between values.
      * @param stationInfo
-     * @return
+     * @return val
      */
     public String parseVal(String stationInfo){
         String val = "";
@@ -120,6 +125,7 @@ public class Parser {
     }
 
     /**
+     * Erases the first occurrence of a string/value that has just been parsed. The parser can then continue to read the next value.
      * @param val
      * @param allStationInfo
      * @return

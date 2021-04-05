@@ -1,10 +1,16 @@
 package BostonMetroSystem.test;
 
-import BostonMetroSystem.*;
+import BostonMetroSystem.MetroGraph;
+import BostonMetroSystem.Neighbour;
+import BostonMetroSystem.RouteCalculator;
+import BostonMetroSystem.Station;
+import BostonMetroSystem.StationColourPair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
