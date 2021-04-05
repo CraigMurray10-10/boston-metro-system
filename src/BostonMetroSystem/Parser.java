@@ -9,10 +9,17 @@ import java.util.*;
 
 public class Parser {
 
+    /**
+     * Parser constructor
+     */
     public Parser(){
 
     }
 
+    /**
+     * @param filepath
+     * @return
+     */
     public ArrayList<String> readFile(String filepath) {
 
         try {
@@ -95,6 +102,10 @@ public class Parser {
     }
 
 
+    /**
+     * @param stationInfo
+     * @return
+     */
     public String parseVal(String stationInfo){
         String val = "";
         for(char c: stationInfo.toCharArray()){
@@ -108,6 +119,11 @@ public class Parser {
         return val;
     }
 
+    /**
+     * @param val
+     * @param allStationInfo
+     * @return
+     */
     public String fixString(String val, String allStationInfo){
         allStationInfo = allStationInfo.replaceFirst(val, "");
         allStationInfo = allStationInfo.trim();

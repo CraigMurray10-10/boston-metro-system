@@ -23,6 +23,9 @@ public class RouteFinderModel {
 
     Parser parse = new Parser();
 
+    /**
+     * RouteFinderModel constructor
+     */
     public RouteFinderModel(){
         this.stations = this.parseFile("src/BostonMetroSystem/test.txt");
         this.graph = new MetroGraph();
@@ -34,6 +37,10 @@ public class RouteFinderModel {
         this.displayRoute = new ArrayList<>();
     }
 
+    /**
+     * @param filepath
+     * @return stations
+     */
     public ArrayList parseFile(String filepath){
         ArrayList<Station> stations = parse.parseFile(filepath);
 
@@ -41,10 +48,17 @@ public class RouteFinderModel {
     }
 
     //getters & setters
+
+    /**
+     * @return this.stations
+     */
     public ArrayList<Station> getStations(){
         return this.stations;
     }
 
+    /**
+     * Method initialises a graph
+     */
     public void initialiseGraph(){
         for(Station s: stations){
             graph.addVertex(s);
@@ -56,6 +70,11 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * Method calculates shortest route between 2 stations
+     * @param startStationID
+     * @param endStationID
+     */
     public void calculateRoute(int startStationID, int endStationID){
         RouteCalculator rc = new RouteCalculator();
 
@@ -70,8 +89,10 @@ public class RouteFinderModel {
     }
 
 
-
-
+    /**
+     * Method passes what the user has selected from the passed in list view startInput to setStartSelectInput
+     * @param startInput
+     */
     public void userInputSelectStart(ListView<String> startInput){
         startInput.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             String selectedItem = "";
@@ -85,6 +106,10 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * Method passes what the user has selected from the passed in list view endInput to setEndSelectInput
+     * @param endInput
+     */
     public void setUserInputSelectEnd(ListView<String> endInput){
         endInput.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             String selectedItem = "";
@@ -99,25 +124,43 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     *
+     * @param input
+     */
     public void setStartSelectInput(String input){
         this.startSelectInput = input;
 
     }
 
 
+    /**
+     * @param input
+     */
     public void setEndSelectInput(String input){
         this.endSelectInput = input;
 
     }
 
+    /**
+     * @return startSelectInput
+     */
     public String getStartSelectInput(){
         return  this.startSelectInput;
     }
 
+    /**
+     * @return endSelectInput
+     */
     public String getEndSelectInput(){
         return  this.endSelectInput;
     }
 
+    /**
+     * Outputs route from start to end destination to GUI
+     * If start and or end destination missing outputs warning messages
+     * @param findRouteButton
+     */
     public void setButtonInput(javafx.scene.control.Button findRouteButton){
         EventHandler<ActionEvent> click = new EventHandler<ActionEvent>() {
             @Override
@@ -125,22 +168,22 @@ public class RouteFinderModel {
                 String getStart = getStartSelectInput();
                 String getEnd = getEndSelectInput();
 
-                if(getStart == "" && getEnd == ""){
+                if(getStart == null && getEnd == null || getStart == "" && getEnd ==""){
                     Alert startAndEndEmpty = new Alert(Alert.AlertType.WARNING, "Please select make sure you have selected destinations");
                     startAndEndEmpty.showAndWait();
                 }
-                else if(getStart !="" && getEnd ==""){
+                else if(getStart !="" && getEnd =="" || getStart !=null  && getEnd ==null){
                     Alert endEmpty = new Alert(Alert.AlertType.WARNING, "End destination empty");
                     endEmpty.showAndWait();
 
                 }
-                else if(getStart =="" && getEnd!=""){
+                else if(getStart =="" && getEnd!=""  || getStart ==null && getEnd !=null){
                     Alert startEmpty = new Alert(Alert.AlertType.WARNING, "Start destination empty");
                     startEmpty.showAndWait();
                 }
 
 
-                if(getStart != "" && getEnd !="") {
+                if(getStart != null && getEnd !=null && getStart != "" && getEnd !="") {
                     setStartID(getStart);
                     setEndID(getEnd);
 
@@ -162,6 +205,10 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * sets startID equal to the integer value of a passed in string
+     * @param startID1
+     */
     public void setStartID(String startID1){
 
         String parsedId = parse.parseVal(startID1);
@@ -171,6 +218,10 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * sets endID equal to the integer value of a passed in string
+     * @param endID1
+     */
     public void setEndID(String endID1){
 
         String parsedId = parse.parseVal(endID1);
@@ -179,14 +230,24 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * @return startID
+     */
     public int getStartID(){
         return this.startID;
     }
 
+    /**
+     * @return endID
+     */
     public int getEndID(){
         return this.endID;
     }
 
+    /**
+     * Adds all stations on a route to an arrayList
+     * @param stationID
+     */
     public void setStationDisplayRoute(Station stationID){
 
 
@@ -198,11 +259,17 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * @return displayRoute
+     */
     public ArrayList<String> getDisplayRoute(){
 
         return displayRoute;
     }
 
+    /**
+     * Adds route from start to end destination arrayList to temporary ListView
+     */
     public void setUpdateRouteListView(){
         ArrayList<String> tempArrayList = getDisplayRoute();
         tempList.getItems().clear();
@@ -213,8 +280,11 @@ public class RouteFinderModel {
 
     }
 
+    /**
+     * @return tempList
+     */
     public ListView<String> getUpdateRouteListView(){
-        return  tempList;
+        return  this.tempList;
     }
 
 

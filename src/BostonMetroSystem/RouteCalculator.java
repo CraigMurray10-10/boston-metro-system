@@ -5,10 +5,19 @@ import java.util.*;
 public class RouteCalculator {
 
 
+    /**
+     * RouteCalculator constructor
+     */
     public RouteCalculator(){
 
     }
 
+    /**
+     * @param graph
+     * @param source
+     * @param destination
+     * @return
+     */
     public List<Station> findRoute(Graph graph, Station source, Station destination){
         //agenda - will store paths which is why it is a List of Lists.
         Map<List<Station>, Integer> agenda = new HashMap<>();
@@ -58,6 +67,11 @@ public class RouteCalculator {
     }
 
 
+    /**
+     * @param route
+     * @param graph
+     * @return
+     */
     //this method loops through route & calculates how many line switches occur so this can then get mapped
     //in the calculate route method
     public int calculateLineSwitches(List<Station> route, Graph graph){
@@ -95,6 +109,10 @@ public class RouteCalculator {
     }
 
 
+    /**
+     * @param agenda
+     * @return
+     */
     //used to return route with lowest weight in agenda.
     public List<Station> getBestRoute( Map<List<Station>, Integer> agenda){
 

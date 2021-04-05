@@ -14,6 +14,9 @@ public class MVCRouteFinder extends Application {
         launch(args);
     }
 
+    /**
+     * @param stage
+     */
     @Override
     public void start(Stage stage) {
         theController = new RouteFinderController();

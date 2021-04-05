@@ -2,12 +2,15 @@ package BostonMetroSystem;
 
 import javafx.scene.Parent;
 
-import java.util.ArrayList;
+
 
 public class RouteFinderController {
     private RouteFinderModel theModel;
     private RouteFinderView theView;
 
+    /**
+     * RouteFinderController consturctor
+     */
     public RouteFinderController(){
         this.theModel = new RouteFinderModel();
         this.theView = new RouteFinderView(theModel.getStations());
@@ -21,7 +24,8 @@ public class RouteFinderController {
 
     }
 
-    public Parent getParent(){
-        return this.theView.asParent();
-    }
+    /**
+     * @return
+     */
+    public Parent getParent() { return this.theView.asParent(); }
 }

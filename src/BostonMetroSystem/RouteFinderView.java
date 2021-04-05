@@ -1,6 +1,4 @@
 package BostonMetroSystem;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -33,6 +31,11 @@ public class RouteFinderView{
 
 
     private ArrayList<Station> stations;
+
+    /**
+     * RouteFinderView constructor
+     * @param stations
+     */
     public RouteFinderView(ArrayList<Station> stations) {
         this.stations = stations;
 
@@ -40,10 +43,10 @@ public class RouteFinderView{
     }
 
 
-    /*public void initialiseWindow() {
 
-    }*/
-
+    /**
+     * Used to create the graphical user interface
+     */
     public void initialiseWindow() {
         pane = new BorderPane();
         button = new javafx.scene.control.Button("Find Route");
@@ -98,33 +101,46 @@ public class RouteFinderView{
     }
 
 
+    /**
+     * @return pane
+     */
+    public Parent asParent(){ return pane; }
 
 
-    public Parent asParent(){
-        return pane;
-    }
+    /**
+     * @return startListView
+     */
+    public ListView<String> getStartSelectInput(){ return startListView; }
 
-
-    public ListView<String> getStartSelectInput(){
-        return startListView;
-    }
-
+    /**
+     * @return endListView
+     */
     public ListView<String> getEndSelectInput(){return endListView;}
 
+    /**
+     * @return searchStart
+     */
     public TextField getSearchStart(){
         return searchStart;
     }
 
-    public TextField getSearchEnd(){
-        return searchEnd;
-    }
+    /**
+     * @return searchEnd
+     */
+    public TextField getSearchEnd(){ return searchEnd; }
 
-    public ListView<String> getRouteListView(){return routeListView;}
 
+    /**
+     * @return button
+     */
     public Button getButton() {
         return button;
     }
 
+    /**
+     * @param startInput
+     * @param starts
+     */
     public void searchStartUserInput(TextField startInput, ObservableList<String> starts){
 
 
@@ -145,6 +161,10 @@ public class RouteFinderView{
         });
     }
 
+    /**
+     * @param startInput
+     * @param ends
+     */
     public void searchEndUserInput(TextField startInput, ObservableList<String> ends){
 
         FilteredList<String> filterEnd = new FilteredList<>(ends, item -> true);
@@ -164,14 +184,20 @@ public class RouteFinderView{
         });
     }
 
+    /**
+     * @return routes
+     */
     public ObservableList<String> getRoutes(){
         return routes;
     }
 
 
-    public void updateRoutes(ListView<String> getRoutes){
-        routeListView.setItems(getRoutes.getItems());
-
+    /**
+     * Sets the routeListView items to passed in ListView's items
+     * @param getRoutesListView
+     */
+    public void updateRoutes(ListView<String> getRoutesListView){
+        routeListView.setItems(getRoutesListView.getItems());
 
     }
 

@@ -11,11 +11,17 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
     private Map<Station, List<StationColourPair>>  adjVertices;
     private List<Station> stations;
 
+    /**
+     * MetroGraph constructor
+     */
     public MetroGraph(){
         adjVertices = new HashMap<>();
         this.stations = new ArrayList<>();
     }
 
+    /**
+     * @param station
+     */
     //adds id of given station to graph
     public void addVertex(Station station){
         //adds vertex using station id as a map
@@ -23,6 +29,9 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
         stations.add(station);
     }
 
+    /**
+     * @param station
+     */
     //takes all neighbours of a given station, converts into stationcolour pairs
     //then appends to list.
     public void addEdge(Station station){
@@ -45,6 +54,10 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
         }
     }
 
+    /**
+     * @param stationNumber
+     * @return
+     */
     public Station findStation(int stationNumber){
         for (Station st : stations){
             if (st.getID() == stationNumber){
@@ -54,6 +67,9 @@ public class MetroGraph implements Graph<Station, StationColourPair>{
         return null;
     }
 
+    /**
+     * @return adjVertices.get(s)
+     */
     public List<Station> getAllVertices(){
         return this.stations;
     }
