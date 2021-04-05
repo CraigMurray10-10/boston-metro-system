@@ -1,4 +1,0 @@
-  1 OakGrove	        Orange 0 2
- 27 GovernmentCenter		    Green 22 29  Blue 24 28
- 47 Kenmore			    GreenB 46 51  GreenC 54 51  GreenD 57 51
- 41 Copley 			    GreenB 51 34 GreenC 51 34 GreenD 51 34 GreenE 53 34
