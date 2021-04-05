@@ -138,6 +138,9 @@ public class RouteFinderView{
     }
 
     /**
+     * Method wraps the starts ObservableList and filters the contents of the list using the predicate provided by the
+     * user. The changes made in the ObservableList are propagated to the FilteredList and then the startListView is then
+     * set to display this.
      * @param startInput
      * @param starts
      */
@@ -162,14 +165,17 @@ public class RouteFinderView{
     }
 
     /**
-     * @param startInput
+     *  Method wraps the ends ObservableList and filters the contents of the list using the predicate provided by the
+     *  user. The changes made in the ObservableList are propagated to the FilteredList and then the endListView is then
+     *  set to display this.
+     * @param endInput
      * @param ends
      */
-    public void searchEndUserInput(TextField startInput, ObservableList<String> ends){
+    public void searchEndUserInput(TextField endInput, ObservableList<String> ends){
 
         FilteredList<String> filterEnd = new FilteredList<>(ends, item -> true);
 
-        startInput.textProperty().addListener((observable, oldValue, newValue) -> {
+        endInput.textProperty().addListener((observable, oldValue, newValue) -> {
 
 
             if(newValue == null || newValue.length() == 0){
