@@ -1,7 +1,8 @@
 package BostonMetroSystem;
 
 /**
- *
+ * Used to represent neighbouring stations to each station object.
+ * Contains the line colour of which the neighbouring stations are on, along with the 'station before' neighbour (first) and 'station after' neighbour (second).
  */
 public class Neighbour {
     private String line;
