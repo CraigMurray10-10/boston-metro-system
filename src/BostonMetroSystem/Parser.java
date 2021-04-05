@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Used to read in files and the parse the information contained within those files
+ */
 public class Parser {
 
     /**

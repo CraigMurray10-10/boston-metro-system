@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Maintains all the information needed by the GUI
+ * Maintains all the information needed by the GUI.
  * Also contains all the event handlers needed for the user to interact with the GUI
  */
 public class RouteFinderModel {

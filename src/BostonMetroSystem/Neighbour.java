@@ -1,5 +1,8 @@
 package BostonMetroSystem;
 
+/**
+ *
+ */
 public class Neighbour {
     private String line;
     private int first;

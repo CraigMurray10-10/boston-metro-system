@@ -7,7 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * @author CS308 Group 18 Scott Clelland, Claire Higgins, Craig Murray, Zoe Pearson, James Williamson
+ *
+ * Used as the driver classes to run the entire application
  */
 public class MVCRouteFinder extends Application {
     Stage window;
