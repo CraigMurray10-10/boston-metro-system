@@ -130,8 +130,9 @@ public class RouteFinderModel {
     }
 
     /**
-     *
+     *Sets the string value of the selected item from the start destination list
      * @param input
+     *
      */
     public void setStartSelectInput(String input){
         this.startSelectInput = input;
@@ -140,7 +141,9 @@ public class RouteFinderModel {
 
 
     /**
+     * Sets the string value of the selected item from the end destination list
      * @param input
+     *
      */
     public void setEndSelectInput(String input){
         this.endSelectInput = input;
@@ -148,14 +151,18 @@ public class RouteFinderModel {
     }
 
     /**
+     * Returns the string value of the selected item from the start destination list
      * @return startSelectInput
+     *
      */
     public String getStartSelectInput(){
         return  this.startSelectInput;
     }
 
     /**
+     * Returns the string value of the selected item from the end destination list
      * @return endSelectInput
+     *
      */
     public String getEndSelectInput(){
         return  this.endSelectInput;
@@ -236,6 +243,7 @@ public class RouteFinderModel {
     }
 
     /**
+     * Returns the startID
      * @return startID
      */
     public int getStartID(){
@@ -243,6 +251,7 @@ public class RouteFinderModel {
     }
 
     /**
+     * Returns the endID
      * @return endID
      */
     public int getEndID(){
@@ -265,6 +274,7 @@ public class RouteFinderModel {
     }
 
     /**
+     * Returns an arrayList which contains the route
      * @return displayRoute
      */
     public ArrayList<String> getDisplayRoute(){
@@ -286,6 +296,7 @@ public class RouteFinderModel {
     }
 
     /**
+     * Returns the tempList
      * @return tempList
      */
     public ListView<String> getUpdateRouteListView(){

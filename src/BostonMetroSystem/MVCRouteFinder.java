@@ -16,12 +16,18 @@ public class MVCRouteFinder extends Application {
 
     private RouteFinderController theController;
 
+    /**
+     * Main method start of the programs execution
+     * @param args
+     */
     public static void main(String[] args){
         launch(args);
     }
 
     /**
+     * Outputs the GUI
      * @param stage
+     *
      */
     @Override
     public void start(Stage stage) {

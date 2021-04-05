@@ -131,7 +131,7 @@ public class Parser {
      * Erases the first occurrence of a string/value that has just been parsed. The parser can then continue to read the next value.
      * @param val
      * @param allStationInfo
-     * @return
+     * @return allStationInfo
      */
     public String fixString(String val, String allStationInfo){
         allStationInfo = allStationInfo.replaceFirst(val, "");

@@ -22,40 +22,52 @@ public class Neighbour {
     }
 
     /**
+     * Gets the colour of a line
      * @return this.line
+     *
      */
     public String getColour(){ return this.line; }
 
     /**
+     * Sets the colour of a line
      * @param colour
+     *
      */
     public void setColour(String colour){
         this.line = colour;
     }
 
     /**
+     * Gets the first neighbour of a line
      * @return this.first
+     *
      */
     public int getFirst(){
         return this.first;
     }
 
     /**
+     * Sets the first neighbour of a line
      * @param first
+     *
      */
     public void setFirst(int first){
         this.first = first;
     }
 
     /**
+     * Gets the second neighbour of a line
      * @return
+     *
      */
     public int getSecond(){
         return this.second;
     }
 
     /**
+     * Sets the second neighbour of a line
      * @param second
+     *
      */
     public void setSecond(int second){
         this.second = second;

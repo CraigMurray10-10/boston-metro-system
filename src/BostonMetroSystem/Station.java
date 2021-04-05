@@ -48,7 +48,7 @@ public class Station {
 
     /**
      * method formats the id and station name as a string that can be outputted and returns said string
-     * @return
+     * @return a string of the ID and station concatenated together
      */
     public String stationAsString(){
         return (this.ID + " " + this.station);

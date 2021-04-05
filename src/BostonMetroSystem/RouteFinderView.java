@@ -100,22 +100,26 @@ public class RouteFinderView{
 
 
     /**
+     * Returns pane
      * @return pane
      */
     public Parent asParent(){ return pane; }
 
 
     /**
+     * Returns the list of all the start destinations
      * @return startListView
      */
     public ListView<String> getStartSelectInput(){ return startListView; }
 
     /**
+     * Returns the list of all the end destinations
      * @return endListView
      */
     public ListView<String> getEndSelectInput(){return endListView;}
 
     /**
+     * Returns a Textfield searchStart
      * @return searchStart
      */
     public TextField getSearchStart(){
@@ -123,12 +127,14 @@ public class RouteFinderView{
     }
 
     /**
+     * Returns a Textfield searchEnd
      * @return searchEnd
      */
     public TextField getSearchEnd(){ return searchEnd; }
 
 
     /**
+     * Returns the 'Find Route' Button
      * @return button
      */
     public Button getButton() {
@@ -189,6 +195,7 @@ public class RouteFinderView{
     }
 
     /**
+     * Returns an ObservableList routes
      * @return routes
      */
     public ObservableList<String> getRoutes(){

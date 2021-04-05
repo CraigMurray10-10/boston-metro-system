@@ -28,6 +28,7 @@ public class RouteFinderController {
 
     /**
      * @return
+     * Returns the parent of the view
      */
     public Parent getParent() { return this.theView.asParent(); }
 }
