@@ -1,9 +1,14 @@
 package BostonMetroSystem;
 
+
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author CS308 Group 18 Scott Clelland, Claire Higgins, Craig Murray, Zoe Pearson, James Williamson
+ */
 public class MVCRouteFinder extends Application {
     Stage window;
     Scene scene;

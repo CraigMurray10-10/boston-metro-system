@@ -25,7 +25,7 @@ public class ParserTest {
 
     /**
      * Runs same code as readFile with an invalid path, tests if this will throw an exception.
-     * @return void
+     *
      */
     @Test
     public void readFileTest(){
@@ -48,7 +48,7 @@ public class ParserTest {
 
     /**
      * Tests the parsing method to check that it creates objects matching the data successfully.
-     * @return void
+     *
      */
     @Test
     public void parseFileTest(){
