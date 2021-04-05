@@ -9,8 +9,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+
+
 import java.util.ArrayList;
 
+/**
+ *  Used to create and display the graphical user interface
+ */
 public class RouteFinderView{
 
     private javafx.scene.control.Button button;

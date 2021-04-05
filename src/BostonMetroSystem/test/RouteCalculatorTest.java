@@ -28,7 +28,7 @@ public class RouteCalculatorTest {
 
     /**
      * Creates initial graph to be tested
-     * @return void
+     *
      */
     //initialise graph to be searched
     @BeforeEach
@@ -60,7 +60,7 @@ public class RouteCalculatorTest {
 
     /**
      * checks correct path is returned when there is only one path with the shortest possible length
-     * @return void
+     *
      */
     @Test
     public void searchNoEqualPathLengths(){
@@ -77,7 +77,7 @@ public class RouteCalculatorTest {
 
     /**
      * checks correct path is returned when there is more than one possible route with shortest possible length
-     * @return void
+     *
      */
     @Test
     public void searchEqualPathLengths(){
@@ -91,7 +91,7 @@ public class RouteCalculatorTest {
 
     /**
      * checks that the number of line switches occuring within a route is correct
-     * @return void
+     *
      */
     @Test
     public void calculateLineSwitchTest(){
@@ -113,7 +113,7 @@ public class RouteCalculatorTest {
 
     /**
      * checks that the route with lowest integer value associated is returned.
-     * @return void
+     *
      */
      @Test
     public void testBestRoute(){

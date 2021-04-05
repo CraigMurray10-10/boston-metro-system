@@ -21,7 +21,7 @@ public class RouteCalculator {
      * @param graph the graph to be searched
      * @param source the starting node to begin the search from
      * @param destination the goal node
-     * @return List<Station>
+     * @return currentPath
      */
     public List<Station> findRoute(Graph graph, Station source, Station destination){
         //agenda - will store paths which is why it is a List of Lists.
@@ -118,7 +118,7 @@ public class RouteCalculator {
     /**
      * takes queue and returns route within the queue that has the smallest weight associated
      * @param agenda the queue that is being used in search
-     * @return List<Station>
+     * @return bestRoute
      */
     //used to return route with lowest weight in agenda.
     public List<Station> getBestRoute( Map<List<Station>, Integer> agenda){

@@ -3,13 +3,15 @@ package BostonMetroSystem;
 import javafx.scene.Parent;
 
 
-
+/**
+ * Passes required data between the view and the model
+ */
 public class RouteFinderController {
     private RouteFinderModel theModel;
     private RouteFinderView theView;
 
     /**
-     * RouteFinderController consturctor
+     * RouteFinderController constructor
      */
     public RouteFinderController(){
         this.theModel = new RouteFinderModel();

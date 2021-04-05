@@ -10,14 +10,14 @@ public interface Graph<S, P> {
     /**
      * adds a vertex to the graph.
      *  @param node the vertex to be added to the graph
-     * @return void
+     *
      */
     public void addVertex(S node);
 
     /**
      * adds an edge to the graph.
      *  @param  node1 the vertex that for every adjacent vertex an edge has to be added to the graph
-     * @return void
+     *
      */
     public void addEdge(S node1);
 

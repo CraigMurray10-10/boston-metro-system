@@ -10,6 +10,10 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Maintains all the information needed by the GUI
+ * Also contains all the event handlers needed for the user to interact with the GUI
+ */
 public class RouteFinderModel {
     //used to store stations that can be returned to view and also used to initialise graph
     private ArrayList<Station> stations;

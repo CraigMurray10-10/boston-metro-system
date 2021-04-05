@@ -28,7 +28,7 @@ public class MetroGraphTest {
 
     /**
      * Creates initial graph to be tested
-     * @return void
+     *
      */
     //initialise graph to be searched
     @BeforeEach
@@ -60,7 +60,7 @@ public class MetroGraphTest {
 
     /**
      * tests vertices are successfully added to graph
-     * @return void
+     *
      */
     @Test
     public void checkVerticesAdded(){
@@ -73,7 +73,7 @@ public class MetroGraphTest {
 
     /**
      * tests edges are successfully added
-     * @return void
+     *
      */
     @Test
     public void checkNeighbouringNodes(){
